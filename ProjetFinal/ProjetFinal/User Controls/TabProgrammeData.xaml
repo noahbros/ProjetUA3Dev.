@@ -7,6 +7,54 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Section de gauche-->
+        <Grid Grid.Column="0" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+
+            <!--Section num. de programme -->
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"  FontWeight="Bold" FontSize="16" Margin="10" VerticalAlignment="Top">Numéro de programme :</TextBlock>
+                <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" InputScope="Number"></TextBox>
+            </Grid>
+
+            <!-- Section nom du programme-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"  FontWeight="Bold" FontSize="16" Margin="10" VerticalAlignment="Top">Nom du programme :</TextBlock>
+                <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" InputScope="Number"></TextBox>
+            </Grid>
+            <!-- Section Duree de programme (en mois)-->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"  FontWeight="Bold" FontSize="16" Margin="10" VerticalAlignment="Top">Durée du programme (en mois) :</TextBlock>
+                <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" InputScope="Number"></TextBox>
+            </Grid>
+
+            <!-- Boutton ajouter -->
+            <Button Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Left" Margin="10" Background="LightSlateGray">Ajouter</Button>
+        </Grid>
     </Grid>
 </UserControl>
