@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {}
+    "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {
+    "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+        "projectUniqueName": "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
         "projectName": "ProjetFinal",
-        "projectPath": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
-        "packagesPath": "C:\\Users\\Amelie Racine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
+        "projectPath": "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+        "packagesPath": "C:\\Users\\Olivier\\.nuget\\packages\\",
+        "outputPath": "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Amelie Racine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Olivier\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

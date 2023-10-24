@@ -7,7 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="User Controls\TabConsulterData.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="User Controls\TabProgrammeData.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="User Controls\TabStagiaireData.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="User Controls\TabConsulterData.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="User Controls\TabProgrammeData.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="User Controls\TabStagiaireData.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
