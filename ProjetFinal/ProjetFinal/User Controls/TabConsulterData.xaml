@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="ProjetFinal.User_Controls.TabConsulterData"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjetFinal.User_Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Numéro étudiant : "/>
+        <Label Content="Prénom : " Grid.Row="1"/>
+        <TextBox Grid.Row="1" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">Prénom de l'étudiant</TextBox>
+        <Label Content="Nom : " Grid.Row="2"/>
+        <TextBox Grid.Row="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">Nom de l'étudiant</TextBox>
+        <Label Content="Date de naissance : " Grid.Row="3"/>
+        <DatePicker Grid.Row="3" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+        <StackPanel Grid.Row="4" VerticalAlignment="Center">
+            <Label Content="Sexe : " />
+            <RadioButton>Homme</RadioButton>
+            <RadioButton>Femme</RadioButton>
+            <RadioButton>Autres</RadioButton>
+        </StackPanel>
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.RowSpan="6" TextAlignment="Center">Apercu de l'étudiant</TextBlock>
+        <Label Content="Programme : " Grid.Row="5"/>
+        <ListBox Grid.Row="5" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:ItemsSource="{d:SampleData ItemCount=5}"></ListBox>
+        <Button Content="Ajouter" Grid.Row="6" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Button Content="Effacer" Grid.Row="6" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+    </Grid>
+</UserControl>

@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFinal"
         mc:Ignorable="d"
+        xmlns:tabData="clr-namespace:ProjetFinal.User_Controls"
         Title="Projet Finale" Height="550" Width="800"
         MinHeight="550" MinWidth="800">
     <Grid>
         <TabControl>
 			<!-- NOAH B.-->
             <TabItem Header="Programme">
+
             </TabItem>
 			<!-- AMÉLIE R. -->
             <TabItem Header="Stagiaire" Height="20" VerticalAlignment="Top" >
@@ -57,10 +59,14 @@
                     <Button Content="Effacer" Grid.Row="6" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
                 </Grid>
-				<!-- OLIVIER C. -->
-			</TabItem>
+            </TabItem>
 
             <TabItem Header="Consulter">
+                
+                <!-- OLIVIER C. -->
+                <tabData:TabConsulterData/>
+
+
             </TabItem>
         </TabControl>
 
