@@ -8,8 +8,10 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
+			<!-- NOAH B.-->
             <TabItem Header="Programme">
             </TabItem>
+			<!-- AMÉLIE R. -->
             <TabItem Header="Stagiaire" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -45,7 +47,8 @@
                     <Button Content="Effacer" Grid.Row="6" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
                 </Grid>
-            </TabItem>
+				<!-- OLIVIER C. -->
+			</TabItem>
 
             <TabItem Header="Consulter">
             </TabItem>
