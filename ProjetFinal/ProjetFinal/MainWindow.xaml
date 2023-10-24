@@ -12,7 +12,7 @@
             <TabItem Header="Programme">
             </TabItem>
 			<!-- AMÉLIE R. -->
-            <TabItem Header="Stagiaire" >
+            <TabItem Header="Stagiaire" Height="20" VerticalAlignment="Top" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -27,13 +27,22 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
+                    
                     <Label Content="Numéro étudiant : "/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <TextBox Grid.Row="0" Grid.Column="0" Height="30" Width="150">0</TextBox>
+                        <StackPanel VerticalAlignment="Center">
+                            <Button Height="15" Width="30" Content="˄"/>
+                            <Button Height="15" Width="30" Content="˅" />
+                        </StackPanel>
+                    </StackPanel>                   
+                    
                     <Label Content="Prénom : " Grid.Row="1"/>
                     <TextBox Grid.Row="1" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">Prénom de l'étudiant</TextBox>
                     <Label Content="Nom : " Grid.Row="2"/>
                     <TextBox Grid.Row="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">Nom de l'étudiant</TextBox>
                     <Label Content="Date de naissance : " Grid.Row="3"/>
-                    <DatePicker Grid.Row="3" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                    <DatePicker Grid.Row="3" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                     <StackPanel Grid.Row="4" VerticalAlignment="Center">
                         <Label Content="Sexe : " />
                         <RadioButton>Homme</RadioButton>
