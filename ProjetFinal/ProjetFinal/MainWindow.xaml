@@ -12,7 +12,7 @@
         <TabControl>
 			<!-- NOAH B.-->
             <TabItem Header="Programme">
-
+                <tabData:TabProgrammeData/>
             </TabItem>
 			<!-- AMÉLIE R. -->
             <TabItem Header="Stagiaire" Height="20" VerticalAlignment="Top" >
