@@ -54,7 +54,30 @@
             </Grid>
 
             <!-- Boutton ajouter -->
-            <Button Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Left" Margin="10" Background="LightSlateGray">Ajouter</Button>
+            <Button Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Left" Margin="10" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic">Ajouter</Button>
         </Grid>
+
+        <!-- Section de droite -->
+        <Grid Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <ListView Margin="10">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="# de programme" Width="100"></GridViewColumn>
+                            <GridViewColumn Header="Nom de programme" Width="150"></GridViewColumn>
+                            <GridViewColumn Header="Durée en mois" Width="100"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Button Grid.Row="3" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic">Supprimer la collection</Button>
+            </Grid>
+        </Grid>
+        
     </Grid>
 </UserControl>
