@@ -6,7 +6,92 @@
              xmlns:local="clr-namespace:ProjetFinal.User_Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Background="Gainsboro">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--Saisie du numéro d'étudiant du stagiaire -->
+        <Label Content="Numéro étudiant : " FontWeight="Bold" FontSize="16" Margin="10"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0" >
+            <TextBox Height="30" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">0</TextBox>
+            <StackPanel VerticalAlignment="Center">
+                <Button Height="15" Width="30" Content="˄" Background="Black" Foreground="White" Padding="-2"/>
+                <Button Height="15" Width="30" Content="˅" Background="Black" Foreground="White" Padding="-2"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!--Selection du programme -->
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <Label Content="Programme : " FontWeight="Bold" FontSize="16" Margin="10" />
+            <ListBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="30,0" AllowDrop="True">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Programme}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+
+        <!--Saisie du prénom du stagiaire -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
+            <Label Content="Prénom : "  FontWeight="Bold" FontSize="16"/>
+            <TextBox Height="30" Width="150" HorizontalAlignment="Right" Margin="90,0" VerticalContentAlignment="Center">Prénom de l'étudiant</TextBox>
+        </StackPanel>
+
+
+        <!--Saisie du nom du stagiaire -->
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="10">
+            <Label Content="Nom : " FontWeight="Bold" FontSize="16"/>
+            <TextBox Height="30" Width="150" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="90,0">Nom de l'étudiant</TextBox>
+        </StackPanel>
+
+
+        <!--Selection de la date de naissance -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
+            <Label Content="Date de naissance : " FontWeight="Bold" FontSize="16" />
+            <DatePicker Height="30" Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0"/>
+        </StackPanel>
+
+
+        <!--Selection du sexe du stagiaire -->
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="10">
+            <Label Content="Sexe : " FontWeight="Bold" FontSize="16" />
+            <RadioButton VerticalAlignment="Center" Margin="10">Homme</RadioButton>
+            <RadioButton VerticalAlignment="Center" Margin="10">Femme</RadioButton>
+            <RadioButton VerticalAlignment="Center" Margin="10">Autres</RadioButton>
+        </StackPanel>
+
+
+
+        <!--Les boutons pour ajouter ou effacer les données dans les champs -->
+        <Button Content="Ajouter" Grid.Row="3" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic"/>
+        <Button Content="Effacer" Grid.Row="3" Grid.Column="1" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic"/>
+
+        <!--Apercu du nouveau stagiaire avant l'ajout -->
+        <ListView Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="# d'étudiant" Width="128"></GridViewColumn>
+                    <GridViewColumn Header="Programme" Width="128"></GridViewColumn>
+                    <GridViewColumn Header="Pénom" Width="128"></GridViewColumn>
+                    <GridViewColumn Header="Nom" Width="128"></GridViewColumn>
+                    <GridViewColumn Header="Date de naissance" Width="128"></GridViewColumn>
+                    <GridViewColumn Header="Sexe" Width="128"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </UserControl>
