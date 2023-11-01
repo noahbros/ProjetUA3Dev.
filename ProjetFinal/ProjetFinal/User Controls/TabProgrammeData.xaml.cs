@@ -50,8 +50,16 @@ namespace ProjetFinal.User_Controls
             //Checks non-allowed values, and creates an object of the new Programme.
             if(int.TryParse(Numero.Text, out numeroProgramme) && int.TryParse(Mois.Text, out moisProgramme))
             {
+                if(numeroProgramme.ToString().Count() < 7 || numeroProgramme.ToString().Count() > 7 || moisProgramme < 0 || moisProgramme > 60)
+                {
+                    MessageBox.Show("S.V.P respecter les contraintes imposer pour tout les valeurs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
                 listesProgrammes.Add(new Programme { Numero = numeroProgramme, Nom = Nom.Text, Duree = moisProgramme });
                 lvProgramme.ItemsSource = listesProgrammes;
+                Numero.Text = "";
+                Mois.Text = "";
+                Nom.Text = "";
             }
             else
             {
@@ -59,6 +67,12 @@ namespace ProjetFinal.User_Controls
                 return;
             }
 
+        }
+
+        private void Supprimer_Click(object sender, RoutedEventArgs e)
+        {
+            listesProgrammes.Clear();
+            lvProgramme.ItemsSource = listesProgrammes;
         }
     }
 }

@@ -92,7 +92,7 @@
                     </ListView.View>
                 </ListView>
 
-                <Button Grid.Row="3" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic">Supprimer la collection</Button>
+                <Button Grid.Row="3" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Click="Supprimer_Click">Supprimer la collection</Button>
             </Grid>
         </Grid>
         
