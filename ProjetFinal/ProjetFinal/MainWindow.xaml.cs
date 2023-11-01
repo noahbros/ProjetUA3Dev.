@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetFinal.User_Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,15 @@ namespace ProjetFinal
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
+
+
+
     }
 }
