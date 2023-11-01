@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\great\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {}
+    "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\great\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {
+    "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\great\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+        "projectUniqueName": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
         "projectName": "ProjetFinal",
-        "projectPath": "C:\\Users\\great\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
-        "packagesPath": "C:\\Users\\great\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\great\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
+        "projectPath": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+        "packagesPath": "C:\\Users\\popta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\great\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\popta\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
