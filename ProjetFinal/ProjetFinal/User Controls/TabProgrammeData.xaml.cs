@@ -52,7 +52,7 @@ namespace ProjetFinal.User_Controls
             {
                 if(numeroProgramme.ToString().Count() < 7 || numeroProgramme.ToString().Count() > 7 || moisProgramme < 0 || moisProgramme > 60)
                 {
-                    MessageBox.Show("S.V.P respecter les contraintes imposer pour tout les valeurs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("S.V.P respecter tout les contraintes imposer pour chaques champs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 listesProgrammes.Add(new Programme { Numero = numeroProgramme, Nom = Nom.Text, Duree = moisProgramme });
@@ -63,7 +63,7 @@ namespace ProjetFinal.User_Controls
             }
             else
             {
-                MessageBox.Show("S.V.P remplire tout les champs avec les valeurs demander.", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("S.V.P respecter tout les contraintes imposer pour chaques champs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

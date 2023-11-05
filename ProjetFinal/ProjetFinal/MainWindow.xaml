@@ -17,54 +17,7 @@
             </TabItem>
 			<!-- AMÉLIE R. -->
             <TabItem Header="Stagiaire" Height="20" VerticalAlignment="Top" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <Label Content="Numéro étudiant : "/>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-                        <TextBox Grid.Row="0" Grid.Column="0" Height="30" Width="150">0</TextBox>
-                        <StackPanel VerticalAlignment="Center">
-                            <Button Height="15" Width="30" Content="˄"/>
-                            <Button Height="15" Width="30" Content="˅" />
-                        </StackPanel>
-                    </StackPanel>
-
-                    <Label Content="Prénom : " Grid.Row="1"/>
-                    <TextBox Grid.Row="1" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">Prénom de l'étudiant</TextBox>
-                    <Label Content="Nom : " Grid.Row="2"/>
-                    <TextBox Grid.Row="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">Nom de l'étudiant</TextBox>
-                    <Label Content="Date de naissance : " Grid.Row="3"/>
-                    <DatePicker Grid.Row="3" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                    <StackPanel Grid.Row="4" VerticalAlignment="Center">
-                        <Label Content="Sexe : " />
-                        <RadioButton>Homme</RadioButton>
-                        <RadioButton>Femme</RadioButton>
-                        <RadioButton>Autres</RadioButton>
-                    </StackPanel>
-
-
-                    <Border Grid.Column="1" Grid.RowSpan="6" HorizontalAlignment="Center" BorderThickness="0.5" BorderBrush="Black"  Width="300">
-                        <TextBlock TextAlignment="Center">Apercu de l'étudiant</TextBlock>
-                    </Border>
-
-                    <Label Content="Programme : " Grid.Row="5" />
-                    <ListBox Grid.Row="5" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:ItemsSource="{d:SampleData ItemCount=5}"></ListBox>
-                    <Button Content="Ajouter" Grid.Row="6" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                    <Button Content="Effacer" Grid.Row="6" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
-                </Grid>
+                <tabData:TabStagiaireData/>
             </TabItem>
 
             <TabItem Header="Consulter">

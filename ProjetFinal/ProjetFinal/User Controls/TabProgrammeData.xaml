@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Gainsboro">
-       
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition/>
@@ -24,9 +24,11 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Description" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"></Label>
-            <TextBlock Grid.Row="1" Text="Ici vous pouvez créer des programmes et l'insérer dans la liste de programme, les informations requises sont : Le numéro de programme (nombre entier réelle de 7 chiffres), le nom du programme et la durée du programme en mois (en nombre réelle qui n'excède pas 60)." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
+            <Label Grid.Row="0" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="24"  FontFamily="Bahnschrift SemiBold SemiCondensed"/>
 
+            <Border Margin="4" Background="BlanchedAlmond" BorderBrush="DarkGray" BorderThickness="1" Grid.Row="1">
+                <TextBlock Grid.Row="1" Text="Ici vous pouvez créer des programmes et l'insérer dans la liste de programme, les informations requises sont : Le numéro de programme, le nom du programme et la durée du programme en mois." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
+            </Border>
         </Grid>
 
         <!-- Section de gauche-->
@@ -37,17 +39,23 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
+            <Border Background="GhostWhite" BorderBrush="LightGray" BorderThickness="3" Grid.RowSpan="4">
+                <!--Section num. de programme -->
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="210"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-            <!--Section num. de programme -->
-            <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0"  FontWeight="Bold" FontSize="16" Margin="10" VerticalAlignment="Top">Numéro de programme :</TextBlock>
-                <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,10,0"  InputScope="Number" Name="Numero"></TextBox>
-            </Grid>
+                    <TextBlock Grid.Row="0"  FontWeight="Bold" FontSize="16" Margin="10" VerticalAlignment="Top">Numéro de programme :</TextBlock>
+                    <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,10,0"  InputScope="Number" Name="Numero" Cursor="Hand"></TextBox>
+                    <TextBlock Grid.Row="1" FontStyle="Italic" Foreground="#FFB56666" TextDecorations="Underline" Grid.ColumnSpan="2" Margin="192,0,18,0" >*Nombre réel à 7 chiffres.</TextBlock>
+                </Grid>
+            </Border>
 
             <!-- Section nom du programme-->
             <Grid Grid.Row="1">
@@ -57,7 +65,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0"  FontWeight="Bold" FontSize="16" Margin="10" VerticalAlignment="Top">Nom du programme :</TextBlock>
-                <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,10,0" InputScope="Number" Name="Nom"></TextBox>
+                <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,10,0" InputScope="Number" Name="Nom" Cursor="Hand"></TextBox>
             </Grid>
             <!-- Section Duree de programme (en mois)-->
             <Grid Grid.Row="2">
@@ -65,13 +73,18 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="265"/>
+                    <ColumnDefinition Width="155"/>
+                </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Row="0"  FontWeight="Bold" FontSize="16" Margin="10" VerticalAlignment="Top">Durée du programme (en mois) :</TextBlock>
-                <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,10,0" InputScope="Number" Name="Mois"></TextBox>
+                <TextBox Grid.Row="1" Width="200" MaxWidth="175" MaxHeight="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,10,0" InputScope="Number" Name="Mois" Cursor="Hand"></TextBox>
+                <TextBlock Grid.Row="1" FontStyle="Italic" Foreground="#FFB56666" TextDecorations="Underline" Grid.ColumnSpan="2" Margin="195,0,70,0" >*Nombre réel entre 1 et 60.</TextBlock>
             </Grid>
 
             <!-- Boutton ajouter -->
-            <Button Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Left" Margin="10,0,10,0" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Click="Ajouter_Click">Ajouter</Button>
+            <Button Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Left" Margin="10,0,10,0" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Click="Ajouter_Click" Cursor="Hand">Ajouter</Button>
         </Grid>
 
         <!-- Section de droite -->
@@ -92,9 +105,9 @@
                     </ListView.View>
                 </ListView>
 
-                <Button Grid.Row="3" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Click="Supprimer_Click">Supprimer la collection</Button>
+                <Button Grid.Row="3" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Click="Supprimer_Click" Cursor="Hand">Supprimer la collection</Button>
             </Grid>
         </Grid>
-        
+
     </Grid>
 </UserControl>
