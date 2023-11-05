@@ -79,3 +79,30 @@ C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\Proje
 C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.pdb
 C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.genruntimeconfig.cache
 C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ref\ProjetFinal.dll
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.exe
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.deps.json
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.runtimeconfig.json
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.dll
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.pdb
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabConsulterData.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabProgrammeData.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabStagiaireData.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal_MarkupCompile.cache
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal_MarkupCompile.lref
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabConsulterData.baml
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabProgrammeData.baml
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabStagiaireData.baml
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.g.resources
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.AssemblyInfoInputs.cache
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.AssemblyInfo.cs
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.csproj.CoreCompileInputs.cache
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.dll
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\refint\ProjetFinal.dll
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.pdb
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.genruntimeconfig.cache
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ref\ProjetFinal.dll
