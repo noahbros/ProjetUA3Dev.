@@ -6,45 +6,6 @@
              xmlns:local="clr-namespace:ProjetFinal.User_Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-    
-    
-    <!-- <Grid Background="Gainsboro">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Label Content="Numéro étudiant : "/>
-        <Label Content="Prénom : " Grid.Row="1"/>
-        <TextBox Grid.Row="1" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">Prénom de l'étudiant</TextBox>
-        <Label Content="Nom : " Grid.Row="2"/>
-        <TextBox Grid.Row="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">Nom de l'étudiant</TextBox>
-        <Label Content="Date de naissance : " Grid.Row="3"/>
-        <DatePicker Grid.Row="3" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
-        <StackPanel Grid.Row="4" VerticalAlignment="Center">
-            <Label Content="Sexe : " />
-            <RadioButton>Homme</RadioButton>
-            <RadioButton>Femme</RadioButton>
-            <RadioButton>Autres</RadioButton>
-        </StackPanel>
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.RowSpan="6" TextAlignment="Center">Apercu de l'étudiant</TextBlock>
-        <Label Content="Programme : " Grid.Row="5"/>
-        <ListBox Grid.Row="5" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:ItemsSource="{d:SampleData ItemCount=5}"></ListBox>
-        <Button Content="Ajouter" Grid.Row="6" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Button Content="Effacer" Grid.Row="6" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
-    </Grid>
-    
-    -->
 
     <DockPanel Background="Gainsboro">
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
@@ -53,24 +14,24 @@
                 <TextBox/>
             </StackPanel>
             <StackPanel>
-                <Label Content="Prénom:"/>
+                <Label Content="Nom:"/>
                 <TextBox/>
             </StackPanel>
             <StackPanel>
-                <Label Content="Prénom:"/>
+                <Label Content="Programme:"/>
                 <TextBox/>
             </StackPanel>
 
-            <Button Content="Rechercher"/>
+            <Button Content="Rechercher" Name="Boutton_Rechercher" Click="Boutton_Rechercher_Click"/>
 
         </StackPanel>
 
-        <ListView Margin="10" Name="lvConsulter">
+        <ListView Margin="10" Name="lvConsulter" MouseDoubleClick="lvConsulter_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Prénom" Width="150" DisplayMemberBinding="{Binding Prenom}" />
                     <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding NomDeFamille}" />
-                    <GridViewColumn Header="Programme" Width="150" DisplayMemberBinding="{Binding Programme}" />
+                    <GridViewColumn Header="Programme" Width="200" DisplayMemberBinding="{Binding Programme}" />
                 </GridView>
             </ListView.View>
         </ListView>

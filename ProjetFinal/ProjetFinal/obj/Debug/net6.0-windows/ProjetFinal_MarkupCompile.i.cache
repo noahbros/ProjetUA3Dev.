@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 \\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\App.xaml
-41807226
+51616160212
 
-81388199856
+9-337255437
 194-1325968647
-MainWindow.xaml;User Controls\TabConsulterData.xaml;User Controls\TabProgrammeData.xaml;User Controls\TabStagiaireData.xaml;
+ConsulterPopUp.xaml;MainWindow.xaml;User Controls\TabConsulterData.xaml;User Controls\TabProgrammeData.xaml;User Controls\TabStagiaireData.xaml;
 
-False
+True
 

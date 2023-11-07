@@ -40,5 +40,19 @@ namespace ProjetFinal.User_Controls
             items.Add(new Stagiaire() { Prenom = "Olivier", NomDeFamille = "Caron", NumeroEtudiant = 2680133, DateDeNaissance = "2002/11/10", Sexe = "Male", Programme = "Programmation Informatique" });
             lvConsulter.ItemsSource = items;
         }
+
+        private void Boutton_Rechercher_Click(object sender, RoutedEventArgs e)
+        {
+            var formPopup = new ConsulterPopUp();
+            formPopup.Show(); // if you need non-modal window
+
+        }
+
+        private void lvConsulter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var formPopup = new ConsulterPopUp();
+            formPopup.Show(); // if you need non-modal window
+
+        }
     }
 }
