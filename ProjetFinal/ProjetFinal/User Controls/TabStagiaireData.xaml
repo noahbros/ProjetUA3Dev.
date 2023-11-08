@@ -23,9 +23,11 @@
 			<RowDefinition></RowDefinition>
 		</Grid.RowDefinitions>
 
-		<Label Grid.ColumnSpan="2" Content="Description" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="24" FontWeight="Bold"></Label>
-		<TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Ici vous pouvez enregistrer les étudiants dans la liste de stagiaire. Les informations requises sont : Le numéro d'étudiant (nombre entier réelle), le programme à quel il est inscrit, le nom et prénom de l'étudiant ainsi que sa date de naissance et son sexe." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center"></TextBlock>
-
+        <Label Grid.Row="0" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="24"  FontFamily="Bahnschrift SemiBold SemiCondensed"></Label>
+        <Border Grid.Row="1" Grid.ColumnSpan="2"   Background="BlanchedAlmond" BorderThickness="1" BorderBrush="DarkGray" Margin="4">
+            <TextBlock Text="Ici vous pouvez enregistrer les étudiants dans la liste de stagiaire. Les informations requises sont : Le numéro d'étudiant (nombre entier réelle), le programme à quel il est inscrit, le nom et prénom de l'étudiant ainsi que sa date de naissance et son sexe." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
+        </Border>
+        
 
 		<!--Saisie du numéro d'étudiant du stagiaire -->
 		<Label Content="Numéro étudiant : " Grid.Row="2" FontWeight="Bold" FontSize="16" Margin="10"/>
@@ -43,7 +45,7 @@
 			<ListBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="30,0" AllowDrop="True" Name="programmeEtudiant" d:ItemsSource="{d:SampleData ItemCount=5}">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
-						<TextBlock Text="{Binding Programme}"/>
+						<TextBlock Text="{Binding Programme}"/>                        
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
@@ -53,21 +55,21 @@
 		<!--Saisie du prénom du stagiaire -->
 		<StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">
 			<Label Content="Prénom : "  FontWeight="Bold" FontSize="16"/>
-			<TextBox Height="30" Width="150" HorizontalAlignment="Right" Margin="90,0" VerticalContentAlignment="Center" Name="prenomEtudiant">Prénom de l'étudiant</TextBox>
+			<TextBox Height="30" Width="150" HorizontalAlignment="Right" Margin="77,0" VerticalContentAlignment="Center" Name="prenomEtudiant">Prénom de l'étudiant</TextBox>
 		</StackPanel>
 
 
 		<!--Saisie du nom du stagiaire -->
 		<StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" Margin="10">
 			<Label Content="Nom : " FontWeight="Bold" FontSize="16"/>
-			<TextBox Height="30" Width="150" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="90,0" Name="nomEtudiant">Nom de l'étudiant</TextBox>
+			<TextBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="90,0" Name="nomEtudiant">Nom de l'étudiant</TextBox>
 		</StackPanel>
 
 
 		<!--Selection de la date de naissance -->
 		<StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10">
 			<Label Content="Date de naissance : " FontWeight="Bold" FontSize="16" />
-			<DatePicker Height="30" Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0" Name="dateNaissanceEtudiant"/>
+			<DatePicker Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" Name="dateNaissanceEtudiant"/>
 		</StackPanel>
 
 
@@ -82,8 +84,8 @@
 
 
 		<!--Les boutons pour ajouter ou effacer les données dans les champs -->
-		<Button Content="Ajouter" Grid.Row="5" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Effacer" Click="Btn_Effacer_Click"/>
-		<Button Content="Effacer" Grid.Row="5" Grid.Column="1" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Ajouter" Click="Btn_Ajouter_Click"/>
+		<Button Content="Ajouter" Grid.Row="5" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Ajouter" Click="Btn_Ajouter_Click"/>
+		<Button Content="Effacer" Grid.Row="5" Grid.Column="1" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Effacer" Click="Btn_Effacer_Click"/>
 
 		<!--Apercu du nouveau stagiaire avant l'ajout -->
 		<ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListView_SelectionChanged">
