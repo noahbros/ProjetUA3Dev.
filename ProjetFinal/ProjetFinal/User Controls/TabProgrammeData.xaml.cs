@@ -28,7 +28,7 @@ namespace ProjetFinal.User_Controls
     }
     public partial class TabProgrammeData : UserControl
     {
-        public ObservableCollection<Programme> listesProgrammes = new ObservableCollection<Programme>();
+        public static ObservableCollection<Programme> listesProgrammes = new ObservableCollection<Programme>();
         public TabProgrammeData()
         {
             InitializeComponent();

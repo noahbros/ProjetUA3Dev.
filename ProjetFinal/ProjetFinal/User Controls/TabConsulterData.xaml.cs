@@ -20,7 +20,7 @@ namespace ProjetFinal.User_Controls
     /// </summary>
     /// 
 
-    public class Stagiaire
+    /*public class Stagiaire
     {
         public string Prenom { get; set; }
         public string NomDeFamille { get; set; }
@@ -28,7 +28,7 @@ namespace ProjetFinal.User_Controls
         public string DateDeNaissance { get; set; }
         public string Sexe {  get; set; }
         public string Programme { get; set; }
-    }
+    }*/
 
     public partial class TabConsulterData : UserControl
     {
