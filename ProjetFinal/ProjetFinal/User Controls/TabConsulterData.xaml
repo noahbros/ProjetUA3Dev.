@@ -8,30 +8,53 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <DockPanel Background="Gainsboro">
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <StackPanel>
+        <Grid DockPanel.Dock="Top" Margin="10 0 10 0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="4">
+                <Label Grid.Row="0" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="24"  FontFamily="Bahnschrift SemiBold SemiCondensed"/>
+                <Border Margin="4" Background="BlanchedAlmond" BorderBrush="DarkGray" BorderThickness="1" >
+                    <TextBlock Grid.Row="1" Text="Ici vous pouvez consulter la liste des stagières dans le système. De plus, on peut obtenir plus de précision par le biais d'une recherche avec le prénom, nom ou programme de l'étudiant. Finalement, on peut double-cliquez sur un étudiant, pour voir son profil et son information." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
+                </Border>
+
+            </StackPanel>
+            
+
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="5 0 10 0">
                 <Label Content="Prénom:"/>
                 <TextBox/>
             </StackPanel>
-            <StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="5 0 10 0">
                 <Label Content="Nom:"/>
                 <TextBox/>
             </StackPanel>
-            <StackPanel>
+
+            <StackPanel VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Margin="5 0 10 0">
                 <Label Content="Programme:"/>
-                <TextBox/>
+                <ComboBox Name="cmbProgrammes"/>
             </StackPanel>
 
-            <Button Content="Rechercher" Name="Boutton_Rechercher" Click="Boutton_Rechercher_Click"/>
+            <Button Content="Rechercher" Name="Boutton_Rechercher" Click="Boutton_Rechercher_Click"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3" Height="30" Width="80" Background="LightSlateGray" Margin="0 0 5 0"/>
 
-        </StackPanel>
+        </Grid>
 
         <ListView Margin="10" Name="lvConsulter" MouseDoubleClick="lvConsulter_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Prénom" Width="150" DisplayMemberBinding="{Binding Prenom}" />
                     <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding NomDeFamille}" />
-                    <GridViewColumn Header="Programme" Width="200" DisplayMemberBinding="{Binding Programme}" />
+                    <GridViewColumn Header="Programme" Width="250" DisplayMemberBinding="{Binding Programme}" />
                 </GridView>
             </ListView.View>
         </ListView>
