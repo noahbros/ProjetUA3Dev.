@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetFinal"
         mc:Ignorable="d"
-        Title="ConsulterPopUp" Height="450" Width="800">
+        Title="Consulter: &lt;Nom de la personne&gt;" Height="450" Width="800">
     <Grid>
-        <Label Content="Hello World"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        
+        <Label Content="Informations Personelles" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" FontSize="20"/>
+        <Label Content="Prénom: &lt;Prénom&gt;" Grid.Column="0" Grid.Row="1"/>
+        <Label Content="Nom: &lt;Nom&gt;" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Date de Naissance: &lt;Date de naissance&gt;" Grid.Column="0" Grid.Row="2"/>
+        <Label Content="Numéro étudiant: &lt;#######&gt;" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Sexe: &lt;Sexe&gt;" Grid.Column="0" Grid.Row="3"/>
+
+        <Label Content="Informations programme:" Grid.Column="0" Grid.Row="4" FontWeight="SemiBold" FontSize="20"/>
+        <Label Content="Nom du programme: &lt;Nom&gt;" Grid.Column="0" Grid.Row="5"/>
+        <Label Content="Numéro du programme: &lt;####&gt;" Grid.Column="0" Grid.Row="6"/>
+        <Label Content="Durée du programme: &lt;## mois&gt;" Grid.Column="0" Grid.Row="7"/>
+
+
     </Grid>
 </Window>

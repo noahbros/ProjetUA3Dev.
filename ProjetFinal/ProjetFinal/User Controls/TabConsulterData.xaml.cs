@@ -37,7 +37,8 @@ namespace ProjetFinal.User_Controls
             InitializeComponent();
 
             List<Stagiaire> items = new List<Stagiaire>();
-            items.Add(new Stagiaire() { Prenom = "Olivier", NomDeFamille = "Caron", NumeroEtudiant = 2680133, DateDeNaissance = "2002/11/10", Sexe = "Male", Programme = "Programmation Informatique" });
+            items.Add(new Stagiaire() { Prenom = "Olivier", NomDeFamille = "Caron", NumeroEtudiant = 2640183, DateDeNaissance = "2002/11/10", Sexe = "Male", Programme = "Programmation Informatique" });
+            items.Add(new Stagiaire() { Prenom = "Noah", NomDeFamille = "Brosseau", NumeroEtudiant = 1234567, DateDeNaissance = "2002/11/10", Sexe = "Male", Programme = "Programmation Informatique avec Coop" });
             lvConsulter.ItemsSource = items;
         }
 
