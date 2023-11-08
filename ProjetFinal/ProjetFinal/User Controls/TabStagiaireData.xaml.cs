@@ -46,42 +46,85 @@ namespace ProjetFinal.User_Controls
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Your event handling code goes here
-            // You can handle the selection change in the ListView here
+
         }
 
 
         private void Btn_AugmenteNumEtudiant_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                int numeroEtudiant = int.Parse(NumeroEtudiant.Text);
+                numeroEtudiant++; // Incrémente le numéro d'étudiant de 1
+                NumeroEtudiant.Text = numeroEtudiant.ToString(); // Met à jour la zone de texte avec la nouvelle valeur
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Le numéro d'étudiant doit être un nombre entier.");
+            }
 
         }
 
-        private void Btn_DecrementeNumEtudiant_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn_Ajouter_Click(object sender, RoutedEventArgs e)
-        {
-            string prenomAjouter;
-            string nomDeFamilleAjouter;
-            int numeroEtudiantAjouter;
-            string dateDeNaissanceAjouter;
-            string sexeAjouter;
-            Programme programmeAjouter; 
-
-
-            numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
-            prenomAjouter = prenomEtudiant.Text;
-            nomDeFamilleAjouter = nomEtudiant.Text;
-            dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;
-
-
-        }
-
-        private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
+
+    private void Btn_Ajouter_Click(object sender, RoutedEventArgs e)
+    {
+        string prenomAjouter;
+        string nomDeFamilleAjouter;
+        int numeroEtudiantAjouter;
+        string dateDeNaissanceAjouter;
+        string sexeAjouter;
+        Programme programmeAjouter;
+
+
+        numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
+        prenomAjouter = prenomEtudiant.Text;
+        nomDeFamilleAjouter = nomEtudiant.Text;
+        dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;
+
+
+        if (!string.IsNullOrWhiteSpace(NumeroEtudiant.Text) && //Regarder pour le vrai code pour # etudiant
+            !string.IsNullOrWhiteSpace(prenomEtudiant.Text) &&
+            !string.IsNullOrWhiteSpace(nomEtudiant.Text) &&
+            dateNaissanceEtudiant.SelectedDate != null) //Acceder au sexe de l'etudiant et au programme
+        {
+            int numEtudiant = Convert.ToInt32(NumeroEtudiant.Text);
+            if (numEtudiant < 0)
+            {
+                MessageBox.Show("Numéro étudiant entré invalide");
+                // Sinon creer une espace pour mettre le message d'erreur dans la grille
+            }
+            else
+            {
+                // Ne pas oublier de mettre la variable recevente en .Text pour permettre la concatenation
+                //Resultat.Text += Nom_Prenom.Text + " , " + Date_Naissance.SelectedDate + " , " + Nom_Cour.Text + " , " + Note_Finale.Text + "%" + "\n";
+                // Avec le += les resultats vont s'accumuler dans la zone de texte sinon avec juste = a chaque ajout on va ecraser la valeur precedente
+            }
+        }
+        else
+        {
+            MessageBox.Show("Il y a des champs vide. Veuillez remplir toutes le champs demander.");
+        }
+
+
+
+    }
+
+    private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
+    {
+        prenomEtudiant.Clear();
+        nomEtudiant.Clear();
+        NumeroEtudiant.Text = "0";
+        dateNaissanceEtudiant.SelectedDate = null;
+        sexeHomme.IsChecked = false;
+        sexeFemme.IsChecked = false;
+        sexeAutre.IsChecked = false;
+
+    }
+
+    private void sexeHomme_Checked(object sender, RoutedEventArgs e)
+    {
+
+    }
+}
 }
