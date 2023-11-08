@@ -27,6 +27,13 @@
 
 
             </TabItem>
+            <TabItem Header="À propos">
+
+                <!-- OLIVIER C. -->
+                <tabData:TabAProposData/>
+
+
+            </TabItem>
         </TabControl>
 
     </Grid>

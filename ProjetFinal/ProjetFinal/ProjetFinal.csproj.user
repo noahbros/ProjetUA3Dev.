@@ -10,6 +10,9 @@
     <Compile Update="ConsulterPopUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="User Controls\TabAProposData.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="User Controls\TabConsulterData.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="User Controls\TabAProposData.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="User Controls\TabConsulterData.xaml">

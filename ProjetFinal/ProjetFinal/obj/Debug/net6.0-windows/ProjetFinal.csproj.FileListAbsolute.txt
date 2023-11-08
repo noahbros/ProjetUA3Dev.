@@ -110,3 +110,5 @@ C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\Projet
 \\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.pdb
 \\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.genruntimeconfig.cache
 \\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ref\ProjetFinal.dll
+\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.g.cs
+\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.baml
