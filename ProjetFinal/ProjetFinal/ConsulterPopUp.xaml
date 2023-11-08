@@ -28,27 +28,27 @@
                 <Label Content="Informations personelles:" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" FontSize="20"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
                     <Label Content="Prénom:" FontWeight="Bold"/>
-                    <Label Content="&lt;Prénom&gt;"/>
+                    <Label Content="&lt;Prénom&gt;" Name="PrenomLabel"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
                     <Label Content="Nom:" FontWeight="Bold" />
-                    <Label Content="&lt;Nom&gt;" />
+                    <Label Content="&lt;Nom&gt;" Name="NomLabel"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
                     <Label Content="Date de Naissance:" FontWeight="Bold" />
-                    <Label Content="&lt;MM/JJ/AAAA&gt;" />
+                    <Label Content="&lt;MM/JJ/AAAA&gt;" Name="NaissanceLabel"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
                     <Label Content="Numéro étudiant:" FontWeight="Bold" />
-                    <Label Content="&lt;#######&gt;" />
+                    <Label Content="&lt;#######&gt;" Name="NumeroEtudiantLabel"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
                     <Label Content="Sexe:" FontWeight="Bold" />
-                    <Label Content="&lt;Sexe&gt;" />
+                    <Label Content="&lt;Sexe&gt;" Name="SexeLabel"/>
                 </StackPanel>
                 
             </Grid>
@@ -72,19 +72,19 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
                     <Label Content="Nom du programme:" FontWeight="Bold" />
-                    <Label Content="&lt;Nom&gt;" />
+                    <Label Content="&lt;Nom&gt;" Name="NomProgrammeLabel"/>
                 </StackPanel>
                 
 
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
                     <Label Content="Numéro du programme:" FontWeight="Bold" />
-                    <Label Content="&lt;#######&gt;" />
+                    <Label Content="&lt;#######&gt;" Name="NumeroProgrammeLabel"/>
                 </StackPanel>
 
 
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
                     <Label Content="Durée du programme:" FontWeight="Bold" />
-                    <Label Content="&lt;## mois&gt;" />
+                    <Label Content="&lt;## mois&gt;" Name="DureeProgrammeLabel"/>
                 </StackPanel>
             </Grid>
         </Border>
