@@ -25,6 +25,31 @@ namespace ProjetFinal.User_Controls
             InitializeComponent();
         }
 
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Your event handling code goes here
+            // You can handle the selection change in the ListView here
+        }
 
+
+        private void Btn_AugmenteNumEtudiant_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_DecrementeNumEtudiant_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Ajouter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

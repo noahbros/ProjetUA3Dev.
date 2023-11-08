@@ -16,5 +16,5 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 194-1325968647
 ConsulterPopUp.xaml;MainWindow.xaml;User Controls\TabConsulterData.xaml;User Controls\TabProgrammeData.xaml;User Controls\TabStagiaireData.xaml;
 
-True
+False
 

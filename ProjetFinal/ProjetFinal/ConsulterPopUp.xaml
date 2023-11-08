@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:ProjetFinal"
         mc:Ignorable="d"
         Title="Consulter: &lt;Nom de la personne&gt;" Height="450" Width="800">
-    <Grid>
+
+    
+    <Grid >
+        
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -21,8 +24,11 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
-        
+
+        <Border>
+            
+            
+        </Border>
         <Label Content="Informations Personelles" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" FontSize="20"/>
         <Label Content="Prénom: &lt;Prénom&gt;" Grid.Column="0" Grid.Row="1"/>
         <Label Content="Nom: &lt;Nom&gt;" Grid.Column="1" Grid.Row="1"/>

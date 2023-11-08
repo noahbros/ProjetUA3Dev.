@@ -79,32 +79,5 @@ C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\Projet
 C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.pdb
 C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.genruntimeconfig.cache
 C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ref\ProjetFinal.dll
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.exe
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.deps.json
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.runtimeconfig.json
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.dll
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\bin\Debug\net6.0-windows\ProjetFinal.pdb
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\MainWindow.g.cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabConsulterData.g.cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabProgrammeData.g.cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabStagiaireData.g.cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\App.g.cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal_MarkupCompile.cache
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal_MarkupCompile.lref
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\MainWindow.baml
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabConsulterData.baml
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabProgrammeData.baml
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabStagiaireData.baml
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.g.resources
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.GeneratedMSBuildEditorConfig.editorconfig
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.AssemblyInfoInputs.cache
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.AssemblyInfo.cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.csproj.CoreCompileInputs.cache
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.dll
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\refint\ProjetFinal.dll
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.pdb
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal.genruntimeconfig.cache
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ref\ProjetFinal.dll
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ConsulterPopUp.g.cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ConsulterPopUp.baml
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ConsulterPopUp.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ConsulterPopUp.baml
