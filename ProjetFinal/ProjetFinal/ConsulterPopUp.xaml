@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:ProjetFinal"
         mc:Ignorable="d"
         Title="Consulter: &lt;Nom de la personne&gt;" Height="450" Width="800"
-        MinHeight="350" MinWidth="650">
+        MinHeight="350" MinWidth="650"
+        Background="Gainsboro">
 
 
     <StackPanel VerticalAlignment="Center">
-        <Border BorderBrush="Black" BorderThickness="1" Margin="10 5 10 25" CornerRadius="8" VerticalAlignment="Center">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="10 5 10 25" CornerRadius="8" VerticalAlignment="Center" Background="White">
             <Grid>
 
                 <Grid.RowDefinitions>
@@ -24,7 +25,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Label Content="Informations personelles" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" FontSize="20"/>
+                <Label Content="Informations personelles:" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" FontSize="20"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
                     <Label Content="Prénom:" FontWeight="Bold"/>
                     <Label Content="&lt;Prénom&gt;"/>
@@ -53,7 +54,7 @@
             </Grid>
         </Border>
 
-        <Border BorderBrush="Black" BorderThickness="1" Margin="10 25 10 5" CornerRadius="8">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="10 25 10 5" CornerRadius="8" Background="White">
             <Grid VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -77,7 +78,7 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
                     <Label Content="Numéro du programme:" FontWeight="Bold" />
-                    <Label Content="&lt;####&gt;" />
+                    <Label Content="&lt;#######&gt;" />
                 </StackPanel>
 
 
