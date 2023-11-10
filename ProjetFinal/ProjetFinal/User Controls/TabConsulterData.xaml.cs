@@ -33,9 +33,10 @@ namespace ProjetFinal.User_Controls
         {
             lvConsulter.ItemsSource = null;
             searchCollection.Clear();
-            string nomSearch = searchNom.Text;
-            string prenomSearch = searchPrenom.Text;
-            string programmeSearch = cmbProgrammes.Text;
+            string nomSearch = searchNom.Text.ToLower();
+            string prenomSearch = searchPrenom.Text.ToLower();
+            string programmeSearch = cmbProgrammes.Text.ToLower();
+
             
             if(nomSearch == "" && prenomSearch == "" && programmeSearch == "Aucun")
             {
@@ -53,13 +54,13 @@ namespace ProjetFinal.User_Controls
                 bool prenomSearched = false;
                 bool programmeSearched = false;
 
-                char[] valueNom = s.NomDeFamille.ToCharArray();
+                char[] valueNom = s.NomDeFamille.ToLower().ToCharArray();
                 char[] searchedNom = nomSearch.ToCharArray();
 
-                char[] valuePrenom = s.Prenom.ToCharArray();
+                char[] valuePrenom = s.Prenom.ToLower().ToCharArray();
                 char[] searchedPrenom = prenomSearch.ToCharArray();
 
-                char[] valueProgramme = s.NomDeProgramme.ToCharArray();
+                char[] valueProgramme = s.NomDeProgramme.ToLower().ToCharArray();
                 char[] searchedProgramme = programmeSearch.ToCharArray();
 
                 //Checks if "nom" has a value.
