@@ -27,8 +27,8 @@
 
                 <Label Content="Informations personelles:" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" FontSize="20"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
-                    <Label Content="Prénom:" FontWeight="Bold"/>
-                    <Label Content="&lt;Prénom&gt;" Name="PrenomLabel"/>
+                    <Label Content="Prénom:" FontWeight="Bold" />
+                    <TextBlock Text="&lt;Prénom&gt;" Name="PrenomLabel"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">

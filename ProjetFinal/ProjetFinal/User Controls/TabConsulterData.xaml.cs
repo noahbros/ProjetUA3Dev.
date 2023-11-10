@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,45 +20,105 @@ namespace ProjetFinal.User_Controls
     /// Interaction logic for TabConsulterData.xaml
     /// </summary>
     /// 
-
-    /*public class Stagiaire
-    {
-        public string Prenom { get; set; }
-        public string NomDeFamille { get; set; }
-        public int NumeroEtudiant { get; set; }
-        public string DateDeNaissance { get; set; }
-        public string Sexe {  get; set; }
-        public string Programme { get; set; }
-    }*/
-
     public partial class TabConsulterData : UserControl
     {
+        public ObservableCollection<Stagiaire> searchCollection = new ObservableCollection<Stagiaire>();
         public TabConsulterData()
         {
             InitializeComponent();
-
-            List<Stagiaire> items = new List<Stagiaire>();
-            items.Add(new Stagiaire() { Prenom = "Olivier", NomDeFamille = "Caron", NumeroEtudiant = 2640183, DateDeNaissance = "2002/11/10", Sexe = "Male", NomDeProgramme = "Programmation Informatique" });
-            items.Add(new Stagiaire() { Prenom = "Noah", NomDeFamille = "Brosseau", NumeroEtudiant = 1234567, DateDeNaissance = "2002/11/10", Sexe = "Male", NomDeProgramme = "Programmation Informatique avec Coop" });
-            items.Add(new Stagiaire() { Prenom = "Amélie", NomDeFamille = "Racine", NumeroEtudiant = 9876543, DateDeNaissance = "2003/08/15", Sexe = "Femelle", NomDeProgramme = "Programmation Informatique avec Coop" });
-            lvConsulter.ItemsSource = items;
-
-
-            List<string> programmes = new List<string>();
-            programmes.Add("Aucun");
-            programmes.Add("Informatique");
-            programmes.Add("Technique en génie électrique");
-            programmes.Add("Pattiserie");
-            programmes.Add("Services 911");
-            programmes.Add("Programmation Informatique avec Coop");
-            cmbProgrammes.ItemsSource = programmes;
+            lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
         }
 
         private void Boutton_Rechercher_Click(object sender, RoutedEventArgs e)
         {
-            var formPopup = new ConsulterPopUp();
-            formPopup.Show(); // if you need non-modal window
+            lvConsulter.ItemsSource = null;
+            searchCollection.Clear();
+            string nomSearch = searchNom.Text;
+            string prenomSearch = searchPrenom.Text;
+            string programmeSearch = cmbProgrammes.Text;
 
+            if (nomSearch == "" && prenomSearch == "" && programmeSearch == "Aucun")
+            {
+                lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
+                return;
+            }
+
+            if(nomSearch != "")
+            {
+                foreach(Stagiaire s in TabStagiaireData.listesStagiaires)
+                {
+                    int confirmer = 0;
+                    char[] value = s.NomDeFamille.ToCharArray();
+                    char[] searched = nomSearch.ToCharArray(); 
+
+                    if(value.Length >= searched.Length)
+                    {
+                        for (int i = 0; i < searched.Length; i++)
+                        {
+                            if (searched[i] == value[i])
+                            {
+                                ++confirmer;
+                            }
+                        }
+                        if (confirmer == searched.Length)
+                        {
+                            searchCollection.Add(s);
+                        }
+                    }
+                }
+            }
+
+            if(prenomSearch != "")
+            {
+                foreach (Stagiaire s in TabStagiaireData.listesStagiaires)
+                {
+                    int confirmer = 0;
+                    char[] value = s.Prenom.ToCharArray();
+                    char[] searched = prenomSearch.ToCharArray();
+
+                    if (value.Length >= searched.Length)
+                    {
+                        for (int i = 0; i < searched.Length; i++)
+                        {
+                            if (searched[i] == value[i])
+                            {
+                                ++confirmer;
+                            }
+                        }
+                        if (confirmer == searched.Length)
+                        {
+                            searchCollection.Add(s);
+                        }
+                    }
+                }
+            }
+
+            if(programmeSearch != "")
+            {
+                foreach (Stagiaire s in TabStagiaireData.listesStagiaires)
+                {
+                    int confirmer = 0;
+                    char[] value = s.NomDeProgramme.ToCharArray();
+                    char[] searched = programmeSearch.ToCharArray();
+
+                    if (value.Length >= searched.Length)
+                    {
+                        for (int i = 0; i < searched.Length; i++)
+                        {
+                            if (searched[i] == value[i])
+                            {
+                                ++confirmer;
+                            }
+                        }
+                        if (confirmer == searched.Length)
+                        {
+                            searchCollection.Add(s);
+                        }
+                    }
+                }
+            }
+
+            lvConsulter.ItemsSource = searchCollection;
         }
 
         private void lvConsulter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -65,6 +126,25 @@ namespace ProjetFinal.User_Controls
             var formPopup = new ConsulterPopUp();
             formPopup.Show(); // if you need non-modal window
 
+        }
+
+        private void cmbProgrammes_DropDownOpened(object sender, EventArgs e)
+        {
+           
+            foreach(Programme p in TabProgrammeData.listesProgrammes)
+            {
+                if (cmbProgrammes.Items.Contains(p.Nom))
+                {
+                    continue;
+                }
+                cmbProgrammes.Items.Add(p.Nom);
+            }
+
+            if(cmbProgrammes.HasItems == false)
+            {
+                cmbProgrammes.IsDropDownOpen = false;
+                return;
+            }
         }
     }
 }
