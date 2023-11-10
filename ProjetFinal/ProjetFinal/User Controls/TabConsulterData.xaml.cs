@@ -36,86 +36,146 @@ namespace ProjetFinal.User_Controls
             string nomSearch = searchNom.Text;
             string prenomSearch = searchPrenom.Text;
             string programmeSearch = cmbProgrammes.Text;
-
-            if (nomSearch == "" && prenomSearch == "" && programmeSearch == "Aucun")
+            
+            if(nomSearch == "" && prenomSearch == "" && programmeSearch == "Aucun")
             {
                 lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
                 return;
             }
 
-            if(nomSearch != "")
-            {
-                foreach(Stagiaire s in TabStagiaireData.listesStagiaires)
-                {
-                    int confirmer = 0;
-                    char[] value = s.NomDeFamille.ToCharArray();
-                    char[] searched = nomSearch.ToCharArray(); 
 
-                    if(value.Length >= searched.Length)
+            foreach (Stagiaire s in TabStagiaireData.listesStagiaires)
+            {
+                int confirmerNom = 0;
+                int confirmerPrenom = 0;
+                int confirmerProgramme = 0;
+                bool nomSearched = false;
+                bool prenomSearched = false;
+                bool programmeSearched = false;
+
+                char[] valueNom = s.NomDeFamille.ToCharArray();
+                char[] searchedNom = nomSearch.ToCharArray();
+
+                char[] valuePrenom = s.Prenom.ToCharArray();
+                char[] searchedPrenom = prenomSearch.ToCharArray();
+
+                char[] valueProgramme = s.NomDeProgramme.ToCharArray();
+                char[] searchedProgramme = programmeSearch.ToCharArray();
+
+                //Checks if "nom" has a value.
+                if (nomSearch != "")
+                {
+                    nomSearched = true;
+
+                    //Checks if the value is greater or equal to the search query. (if the search query is greater in length than the value, it is skipped.)
+                    if (valueNom.Length >= searchedNom.Length)
                     {
-                        for (int i = 0; i < searched.Length; i++)
+                        for (int i = 0; i < searchedNom.Length; i++)
                         {
-                            if (searched[i] == value[i])
+                            if (searchedNom[i] == valueNom[i]) //Verifies if every index of the value matches the search query's indexes.
                             {
-                                ++confirmer;
+                                ++confirmerNom; //Increments a confirmer which, if the value is in the search's scope, the confirmer should be equal to the size of the search query.
                             }
-                        }
-                        if (confirmer == searched.Length)
-                        {
-                            searchCollection.Add(s);
                         }
                     }
                 }
-            }
 
-            if(prenomSearch != "")
-            {
-                foreach (Stagiaire s in TabStagiaireData.listesStagiaires)
+                //Checks if "prenom" has a value.
+                if (prenomSearch != "")
                 {
-                    int confirmer = 0;
-                    char[] value = s.Prenom.ToCharArray();
-                    char[] searched = prenomSearch.ToCharArray();
+                    prenomSearched = true;
 
-                    if (value.Length >= searched.Length)
+                    if (valuePrenom.Length >= searchedPrenom.Length)
                     {
-                        for (int i = 0; i < searched.Length; i++)
+                        for (int i = 0; i < searchedPrenom.Length; i++)
                         {
-                            if (searched[i] == value[i])
+                            if (searchedPrenom[i] == valuePrenom[i])
                             {
-                                ++confirmer;
+                                ++confirmerPrenom;
                             }
-                        }
-                        if (confirmer == searched.Length)
-                        {
-                            searchCollection.Add(s);
                         }
                     }
                 }
-            }
 
-            if(programmeSearch != "")
-            {
-                foreach (Stagiaire s in TabStagiaireData.listesStagiaires)
+                if (programmeSearch != "Aucun")
                 {
-                    int confirmer = 0;
-                    char[] value = s.NomDeProgramme.ToCharArray();
-                    char[] searched = programmeSearch.ToCharArray();
+                    programmeSearched = true;
 
-                    if (value.Length >= searched.Length)
+                    if (valueProgramme.Length >= searchedProgramme.Length)
                     {
-                        for (int i = 0; i < searched.Length; i++)
+                        for (int i = 0; i < searchedProgramme.Length; i++)
                         {
-                            if (searched[i] == value[i])
+                            if (searchedProgramme[i] == valueProgramme[i])
                             {
-                                ++confirmer;
+                                ++confirmerProgramme;
                             }
-                        }
-                        if (confirmer == searched.Length)
-                        {
-                            searchCollection.Add(s);
                         }
                     }
                 }
+                //If all fields are used.
+                if(nomSearched && prenomSearched && programmeSearched)
+                {
+                    if(confirmerProgramme == programmeSearch.Length && confirmerNom == nomSearch.Length && confirmerPrenom == prenomSearch.Length)
+                    {
+                        searchCollection.Add(s);
+                    }
+                    continue;
+                }
+                //If only nom and prenom used.
+                if(nomSearched && prenomSearched && !programmeSearched)
+                {
+                    if(confirmerNom ==  nomSearch.Length && confirmerPrenom == prenomSearch.Length)
+                    {
+                        searchCollection.Add(s);
+                    }
+                    continue;
+                }
+                //If only nom and programme used.
+                else if(nomSearched && !prenomSearched && programmeSearched)
+                {
+                    if(confirmerNom == nomSearch.Length && confirmerProgramme == programmeSearch.Length)
+                    {
+                        searchCollection.Add(s);
+                    }
+                    continue;
+                }
+                //If only prenom and programme used.
+                else if(!nomSearched && prenomSearched && programmeSearched)
+                {
+                    if(confirmerPrenom == prenomSearch.Length && confirmerProgramme == programmeSearch.Length)
+                    {
+                        searchCollection.Add(s);
+                    }
+                    continue;
+                }
+                //If only nom is used
+                else if(nomSearched && !prenomSearched && !programmeSearched)
+                {
+                    if(confirmerNom == nomSearch.Length)
+                    {
+                        searchCollection.Add(s);
+                    }
+                    continue;
+                }
+                //If only prenom is used
+                else if(!nomSearched && prenomSearched && !programmeSearched)
+                {
+                    if(confirmerPrenom == prenomSearch.Length)
+                    {
+                        searchCollection.Add(s);
+                    }
+                    continue;
+                }
+                //If only programme is used
+                else
+                {
+                    if(confirmerProgramme == programmeSearch.Length)
+                    {
+                        searchCollection.Add(s);
+                    }
+                    continue;
+                }
+
             }
 
             lvConsulter.ItemsSource = searchCollection;
