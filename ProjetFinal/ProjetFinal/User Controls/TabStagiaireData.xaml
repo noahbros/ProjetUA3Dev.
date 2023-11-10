@@ -42,13 +42,8 @@
 		<!--Selection du programme -->
 		<StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal">
 			<Label Content="Programme : " FontWeight="Bold" FontSize="16" Margin="10" />
-			<ComboBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="30,0" AllowDrop="True" Name="programmeEtudiant" d:ItemsSource="{ItemCount=5}">
-				<ComboBox.ItemTemplate>
-					<DataTemplate>
-						<TextBlock Text="{Binding Programme}"/>
-					</DataTemplate>
-				</ComboBox.ItemTemplate>
-			</ComboBox>
+            <ComboBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="30,0" Name="programmeEtudiant" DropDownOpened="programmeEtudiant_DropDownOpened">
+            </ComboBox>
 		</StackPanel>
 
 
@@ -74,11 +69,11 @@
 
 
 		<!--Selection du sexe du stagiaire -->
-		<StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="10" Name="sexeChoix">
-			<Label Content="Sexe : " FontWeight="Bold" FontSize="16" />
-			<RadioButton VerticalAlignment="Center" Margin="10" Name="sexeHomme" GroupName="sexeEtudiant" Checked="sexeHomme_Checked">Homme</RadioButton>
-			<RadioButton VerticalAlignment="Center" Margin="10" Name="sexeFemme" GroupName="sexeEtudiant">Femme</RadioButton>
-			<RadioButton VerticalAlignment="Center" Margin="10" Name="sexeAutre" GroupName="sexeEtudiant">Autres</RadioButton>
+		<StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="5" Name="sexeChoix">
+			<Label Content="Sexe : " FontWeight="Bold" FontSize="16" Margin="7,0,0,0" />
+            <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeHomme" GroupName="sexeChoix">Homme</RadioButton>
+            <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeFemme" GroupName="sexeChoix">Femme</RadioButton>
+            <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeAutre" GroupName="sexeChoix">Autres</RadioButton>
 		</StackPanel>
 
 
@@ -88,15 +83,15 @@
 		<Button Content="Effacer" Grid.Row="5" Grid.Column="1" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Effacer" Click="Btn_Effacer_Click"/>
 
 		<!--Apercu du nouveau stagiaire avant l'ajout -->
-		<ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" SelectionChanged="ListView_SelectionChanged" Name="listeStagiaire">
+		<ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" Name="listeStagiaire" Width="680">
 			<ListView.View>
 				<GridView>
-					<GridViewColumn Header="# d'étudiant" Width="128" DisplayMemberBinding="{Binding numeroEtudiant}"></GridViewColumn>
-					<GridViewColumn Header="Programme" Width="128" DisplayMemberBinding="{Binding nomProgramme}"></GridViewColumn>
-					<GridViewColumn Header="Pénom" Width="128" DisplayMemberBinding="{Binding prenomEtudiant}"></GridViewColumn>
-					<GridViewColumn Header="Nom" Width="128" DisplayMemberBinding="{Binding nomEtudiant}"></GridViewColumn>
-					<GridViewColumn Header="Date de naissance" Width="128" DisplayMemberBinding="{Binding dateNaissanceEtudiant}"></GridViewColumn>
-					<GridViewColumn Header="Sexe" Width="128" DisplayMemberBinding="{Binding sexeEtudiant}"></GridViewColumn>
+					<GridViewColumn Header="# d'étudiant" Width="100" DisplayMemberBinding="{Binding NumeroEtudiant}"></GridViewColumn>
+					<GridViewColumn Header="Programme" Width="128" DisplayMemberBinding="{Binding NomDeProgramme}"></GridViewColumn>
+					<GridViewColumn Header="Pénom" Width="110" DisplayMemberBinding="{Binding Prenom}"></GridViewColumn>
+					<GridViewColumn Header="Nom" Width="128" DisplayMemberBinding="{Binding NomDeFamille}"></GridViewColumn>
+					<GridViewColumn Header="Date de naissance" Width="128" DisplayMemberBinding="{Binding DateDeNaissance}"></GridViewColumn>
+					<GridViewColumn Header="Sexe" Width="75" DisplayMemberBinding="{Binding Sexe}"></GridViewColumn>
 				</GridView>
 			</ListView.View>
 		</ListView>

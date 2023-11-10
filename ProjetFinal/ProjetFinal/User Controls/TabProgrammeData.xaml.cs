@@ -32,8 +32,6 @@ namespace ProjetFinal.User_Controls
         public TabProgrammeData()
         {
             InitializeComponent();
-            lvProgramme.ItemsSource = listesProgrammes;
-
         }
         public void Ajouter_Click(object sender, RoutedEventArgs e)
         {
