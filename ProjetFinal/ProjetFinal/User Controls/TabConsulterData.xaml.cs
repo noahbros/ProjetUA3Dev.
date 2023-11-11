@@ -35,7 +35,7 @@ namespace ProjetFinal.User_Controls
             searchCollection.Clear();
             string nomSearch = searchNom.Text.ToLower();
             string prenomSearch = searchPrenom.Text.ToLower();
-            string programmeSearch = cmbProgrammes.Text.ToLower();
+            string programmeSearch = cmbProgrammes.Text;
 
             
             if(nomSearch == "" && prenomSearch == "" && programmeSearch == "Aucun")
@@ -60,7 +60,7 @@ namespace ProjetFinal.User_Controls
                 char[] valuePrenom = s.Prenom.ToLower().ToCharArray();
                 char[] searchedPrenom = prenomSearch.ToCharArray();
 
-                char[] valueProgramme = s.NomDeProgramme.ToLower().ToCharArray();
+                char[] valueProgramme = s.NomDeProgramme.ToCharArray();
                 char[] searchedProgramme = programmeSearch.ToCharArray();
 
                 //Checks if "nom" has a value.
@@ -73,7 +73,7 @@ namespace ProjetFinal.User_Controls
                     {
                         for (int i = 0; i < searchedNom.Length; i++)
                         {
-                            if (searchedNom[i] == valueNom[i]) //Verifies if every index of the value matches the search query's indexes.
+                            if (searchedNom[i] == valueNom[i]) //Verifies if every index of the value matches the search's indexes.
                             {
                                 ++confirmerNom; //Increments a confirmer which, if the value is in the search's scope, the confirmer should be equal to the size of the search query.
                             }
