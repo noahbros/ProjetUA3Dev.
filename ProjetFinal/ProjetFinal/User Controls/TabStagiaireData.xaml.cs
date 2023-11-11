@@ -33,12 +33,15 @@ namespace ProjetFinal.User_Controls
     /// </summary>
     public partial class TabStagiaireData : UserControl
     {
-        public static ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>();
+        public ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>();
         public ObservableCollection<Programme> listeDeProgramme = new ObservableCollection<Programme>();
 
         public TabStagiaireData()
         {
             InitializeComponent();
+            listeStagiaire.ItemsSource = listesStagiaires;
+            listeDeProgramme = TabProgrammeData.listesProgrammes;
+            programmeEtudiant.ItemsSource = listeDeProgramme;
         }
 
         private void Btn_AugmenteNumEtudiant_Click(object sender, RoutedEventArgs e)
@@ -46,99 +49,124 @@ namespace ProjetFinal.User_Controls
             try
             {
                 int numeroEtudiant = int.Parse(NumeroEtudiant.Text);
-                numeroEtudiant++; // Incrémente le numéro d'étudiant de 1
-                NumeroEtudiant.Text = numeroEtudiant.ToString(); // Met à jour la zone de texte avec la nouvelle valeur
+                numeroEtudiant++;
+                NumeroEtudiant.Text = numeroEtudiant.ToString();
             }
             catch (FormatException)
             {
                 MessageBox.Show("Le numéro d'étudiant doit être un nombre entier.");
             }
-
         }
 
-        private void Btn_Ajouter_Click(object sender, RoutedEventArgs e)
+        private void Btn_DecrementeNumEtudiant_Click(object sender, RoutedEventArgs e)//Diminue le numero etudiant de -1
         {
-            string prenomAjouter;
-            string nomDeFamilleAjouter;
-            int numeroEtudiantAjouter;
-            string dateDeNaissanceAjouter;
-            string sexeAjouter;
-            string nomProgrammeAjouter;
-
-
-            numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
-            prenomAjouter = prenomEtudiant.Text;
-            nomDeFamilleAjouter = nomEtudiant.Text;
-            dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;
-            nomProgrammeAjouter = programmeEtudiant.Text;
-
-            if(sexeHomme.IsChecked == true)
+            try
             {
-                sexeAjouter = "M";
-            }
-            else if (sexeFemme.IsChecked == true)
-            {
-                sexeAjouter = "F";
-            }
-            else
-            {
-                sexeAjouter = "Autres";
-            }
-
-
-            if (!string.IsNullOrWhiteSpace(NumeroEtudiant.Text) && //Regarder pour le vrai code pour # etudiant
-                !string.IsNullOrWhiteSpace(prenomEtudiant.Text) &&
-                !string.IsNullOrWhiteSpace(nomEtudiant.Text) &&
-                dateNaissanceEtudiant.SelectedDate != null) //Acceder au sexe de l'etudiant et au programme
-            {
-                int numEtudiant = Convert.ToInt32(NumeroEtudiant.Text);
-                if (numEtudiant < 0)
+                if (NumeroEtudiant.Text.Length == 7 && int.TryParse(NumeroEtudiant.Text, out int numeroEtudiant))
                 {
-                    MessageBox.Show("Numéro étudiant entré invalide");
-                    // Sinon creer une espace pour mettre le message d'erreur dans la grille
+                    if (numeroEtudiant > 0)
+                    {
+                        numeroEtudiant--;
+                        NumeroEtudiant.Text = numeroEtudiant.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le numéro d'étudiant ne peut pas être négatif.");
+                    }
                 }
                 else
                 {
-                    listesStagiaires.Add(new Stagiaire { Prenom = prenomAjouter, NomDeFamille = nomDeFamilleAjouter, NumeroEtudiant = numeroEtudiantAjouter, DateDeNaissance = dateDeNaissanceAjouter, Sexe = sexeAjouter, NomDeProgramme = nomProgrammeAjouter});
-                    listeStagiaire.ItemsSource = listesStagiaires;
-                    //Resets data.
-                    NumeroEtudiant.Text = "";
-                    prenomEtudiant.Text = "";
-                    nomEtudiant.Text = "";
-                    dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
-                    sexeHomme.IsChecked = false;
-                    sexeFemme.IsChecked = false;
-                    sexeAutre.IsChecked = false;
-
-
-                    // Ne pas oublier de mettre la variable recevente en .Text pour permettre la concatenation
-                    //Resultat.Text += Nom_Prenom.Text + " , " + Date_Naissance.SelectedDate + " , " + Nom_Cour.Text + " , " + Note_Finale.Text + "%" + "\n";
-                    // Avec le += les resultats vont s'accumuler dans la zone de texte sinon avec juste = a chaque ajout on va ecraser la valeur precedente
+                    MessageBox.Show("Le numéro d'étudiant doit être un nombre entier de 7 chiffres.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Il y a des champs vide. Veuillez remplir toutes le champs demander.");
-            }
-        }
-
-        private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
-        {
-            listesStagiaires.Clear();
-            listeStagiaire.ItemsSource = listesStagiaires;
-
-        }
-
-        private void programmeEtudiant_DropDownOpened(object sender, EventArgs e)
-        {
-            programmeEtudiant.ItemsSource = TabProgrammeData.listesProgrammes.Select(p => p.Nom);
-
-            if (programmeEtudiant.HasItems == false)
-            {
-                programmeEtudiant.IsDropDownOpen = false;
-                return;
+                MessageBox.Show(ex.Message);
             }
 
+            private void Btn_Ajouter_Click(object sender, RoutedEventArgs e)
+            {
+                string prenomAjouter;
+                string nomDeFamilleAjouter;
+                int numeroEtudiantAjouter;
+                string dateDeNaissanceAjouter;
+                string sexeAjouter;
+                string nomProgrammeAjouter;
+
+                if (dateDeNaissanceAjouter == null)
+                {
+                    champsNonRemplis++;
+                }
+
+                numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
+                prenomAjouter = prenomEtudiant.Text;
+                nomDeFamilleAjouter = nomEtudiant.Text;
+                dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;
+                nomProgrammeAjouter = programmeEtudiant.Text;
+
+                if (sexeHomme.IsChecked == true)
+                {
+                    sexeAjouter = "M";
+                }
+                else if (sexeFemme.IsChecked == true)
+                {
+                    sexeAjouter = "F";
+                }
+                else
+                {
+                    sexeAjouter = "Autres";
+                }
+
+
+                if (!string.IsNullOrWhiteSpace(NumeroEtudiant.Text) && //Regarder pour le vrai code pour # etudiant
+                    !string.IsNullOrWhiteSpace(prenomEtudiant.Text) &&
+                    !string.IsNullOrWhiteSpace(nomEtudiant.Text) &&
+                    dateNaissanceEtudiant.SelectedDate != null) //Acceder au sexe de l'etudiant et au programme
+                {
+                    int numEtudiant = Convert.ToInt32(NumeroEtudiant.Text);
+                    if (numEtudiant < 0)
+                    {
+                        MessageBox.Show("Numéro étudiant entré invalide");
+                        // Sinon creer une espace pour mettre le message d'erreur dans la grille
+                    }
+                    else
+                    {
+                        listesStagiaires.Add(new Stagiaire { Prenom = prenomAjouter, NomDeFamille = nomDeFamilleAjouter, NumeroEtudiant = numeroEtudiantAjouter, DateDeNaissance = dateDeNaissanceAjouter, Sexe = sexeAjouter, NomDeProgramme = nomProgrammeAjouter });
+                        listeStagiaire.ItemsSource = listesStagiaires;
+                        //Resets data.
+                        NumeroEtudiant.Text = "0";
+                        prenomEtudiant.Text = "";
+                        nomEtudiant.Text = "";
+                        dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
+                        sexeHomme.IsChecked = false;
+                        sexeFemme.IsChecked = false;
+                        sexeAutre.IsChecked = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Il y a des champs vide. Veuillez remplir toutes le champs demander.");
+                }
+            }
+
+            private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
+            {
+                listesStagiaires.Clear();
+                listeStagiaire.ItemsSource = listesStagiaires;
+
+            }
+
+            private void programmeEtudiant_DropDownOpened(object sender, EventArgs e)
+            {
+                programmeEtudiant.ItemsSource = TabProgrammeData.listesProgrammes.Select(p => p.Nom);
+
+                if (programmeEtudiant.HasItems == false)
+                {
+                    programmeEtudiant.IsDropDownOpen = false;
+                    return;
+                }
+
+            }
         }
     }
 }
