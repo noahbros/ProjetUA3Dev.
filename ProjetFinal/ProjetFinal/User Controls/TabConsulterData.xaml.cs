@@ -22,7 +22,8 @@ namespace ProjetFinal.User_Controls
     /// 
     public partial class TabConsulterData : UserControl
     {
-        public ObservableCollection<Stagiaire> searchCollection = new ObservableCollection<Stagiaire>();
+        public static ObservableCollection<Stagiaire> searchCollection = new ObservableCollection<Stagiaire>();
+        public static int lvConsulterIndex;
         public TabConsulterData()
         {
             InitializeComponent();
@@ -184,6 +185,7 @@ namespace ProjetFinal.User_Controls
 
         private void lvConsulter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            lvConsulterIndex = lvConsulter.SelectedIndex;  
             var formPopup = new ConsulterPopUp();
             formPopup.Show(); // if you need non-modal window
 

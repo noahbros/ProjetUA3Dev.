@@ -38,7 +38,7 @@ namespace ProjetFinal.User_Controls
 
         public TabStagiaireData()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void Btn_AugmenteNumEtudiant_Click(object sender, RoutedEventArgs e)
