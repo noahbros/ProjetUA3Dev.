@@ -130,3 +130,4 @@ C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net
 C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal_MarkupCompile.cache
 C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal_MarkupCompile.lref
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.g.cs

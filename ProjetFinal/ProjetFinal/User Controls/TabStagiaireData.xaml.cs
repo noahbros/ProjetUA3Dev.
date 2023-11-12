@@ -81,7 +81,7 @@ namespace ProjetFinal.User_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Une erreur c'est produite : "+ex.Message);
             }
         }
         private void Btn_Ajouter_Click(object sender, RoutedEventArgs e)
