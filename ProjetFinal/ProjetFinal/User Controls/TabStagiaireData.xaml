@@ -23,11 +23,11 @@
 			<RowDefinition></RowDefinition>
 		</Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="24"  FontFamily="Bahnschrift SemiBold SemiCondensed"></Label>
-        <Border Grid.Row="1" Grid.ColumnSpan="2"   Background="BlanchedAlmond" BorderThickness="1" BorderBrush="DarkGray" Margin="4">
-            <TextBlock Text="Ici vous pouvez enregistrer les étudiants dans la liste de stagiaire. Les informations requises sont : Le numéro d'étudiant (nombre entier réelle), le programme à quel il est inscrit, le nom et prénom de l'étudiant ainsi que sa date de naissance et son sexe." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
-        </Border>
-        
+		<Label Grid.Row="0" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="24"  FontFamily="Bahnschrift SemiBold SemiCondensed"></Label>
+		<Border Grid.Row="1" Grid.ColumnSpan="2"   Background="BlanchedAlmond" BorderThickness="1" BorderBrush="DarkGray" Margin="4">
+			<TextBlock Text="Ici vous pouvez enregistrer les étudiants dans la liste de stagiaire. Les informations requises sont : Le numéro d'étudiant (nombre entier réelle), le programme à quel il est inscrit, le nom et prénom de l'étudiant ainsi que sa date de naissance et son sexe." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
+		</Border>
+
 
 		<!--Saisie du numéro d'étudiant du stagiaire -->
 		<Label Content="Numéro étudiant : " Grid.Row="2" FontWeight="Bold" FontSize="16" Margin="10"/>
@@ -35,34 +35,29 @@
 			<TextBox Height="30" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="NumeroEtudiant">0</TextBox>
 			<StackPanel VerticalAlignment="Center">
 				<Button Height="15" Width="30" Content="˄" Background="Black" Foreground="White" Padding="-2" Name="Btn_AugmenteNumEtudiant" Click="Btn_AugmenteNumEtudiant_Click"/>
-				<Button Height="15" Width="30" Content="˅" Background="Black" Foreground="White" Padding="-2" Name="Btn_DecrementeNumEtudiant" Click="Btn_DecrementeNumEtudiant_Click"/>
+				<Button Height="15" Width="30" Content="˅" Background="Black" Foreground="White" Padding="-2" Name="Btn_DecrementeNumEtudiant" Click="Btn_DecrementeNumEtudiant_Click" />
 			</StackPanel>
 		</StackPanel>
- 
+
 		<!--Selection du programme -->
 		<StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal">
 			<Label Content="Programme : " FontWeight="Bold" FontSize="16" Margin="10" />
-			<ComboBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="30,0" AllowDrop="True" Name="programmeEtudiant" d:ItemsSource="{ItemCount=5}">
-				<ComboBox.ItemTemplate>
-					<DataTemplate>
-						<TextBlock Text="{Binding Programme}"/>                        
-					</DataTemplate>
-				</ComboBox.ItemTemplate>
-			</ComboBox>
+            <ComboBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="30,0" Name="programmeEtudiant" DropDownOpened="programmeEtudiant_DropDownOpened">
+            </ComboBox>
 		</StackPanel>
 
 
 		<!--Saisie du prénom du stagiaire -->
 		<StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">
 			<Label Content="Prénom : "  FontWeight="Bold" FontSize="16"/>
-			<TextBox Height="30" Width="150" HorizontalAlignment="Right" Margin="77,0" VerticalContentAlignment="Center" Name="prenomEtudiant">Prénom de l'étudiant</TextBox>
+			<TextBox Height="30" Width="150" HorizontalAlignment="Right" Margin="77,0" VerticalContentAlignment="Center" Name="prenomEtudiant"></TextBox>
 		</StackPanel>
 
 
 		<!--Saisie du nom du stagiaire -->
 		<StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" Margin="10">
 			<Label Content="Nom : " FontWeight="Bold" FontSize="16"/>
-			<TextBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="90,0" Name="nomEtudiant">Nom de l'étudiant</TextBox>
+			<TextBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="90,0" Name="nomEtudiant"></TextBox>
 		</StackPanel>
 
 
@@ -74,11 +69,11 @@
 
 
 		<!--Selection du sexe du stagiaire -->
-		<StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="10">
-			<Label Content="Sexe : " FontWeight="Bold" FontSize="16" />
-			<RadioButton VerticalAlignment="Center" Margin="10" Name="sexeHomme">Homme</RadioButton>
-			<RadioButton VerticalAlignment="Center" Margin="10" Name="sexeFemme">Femme</RadioButton>
-			<RadioButton VerticalAlignment="Center" Margin="10" Name="sexeAutre">Autres</RadioButton>
+		<StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="5" Name="sexeChoix">
+			<Label Content="Sexe : " FontWeight="Bold" FontSize="16" Margin="7,0,0,0" />
+            <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeHomme" GroupName="sexeChoix">Homme</RadioButton>
+            <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeFemme" GroupName="sexeChoix">Femme</RadioButton>
+            <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeAutre" GroupName="sexeChoix">Autres</RadioButton>
 		</StackPanel>
 
 
@@ -88,15 +83,15 @@
 		<Button Content="Effacer" Grid.Row="5" Grid.Column="1" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Effacer" Click="Btn_Effacer_Click"/>
 
 		<!--Apercu du nouveau stagiaire avant l'ajout -->
-		<ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" SelectionChanged="ListView_SelectionChanged" Name="listeStagiaire">
+		<ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" Name="listeStagiaire" Width="680">
 			<ListView.View>
 				<GridView>
-					<GridViewColumn Header="# d'étudiant" Width="128" DisplayMemberBinding="{Binding numeroEtudiant}"></GridViewColumn>
-					<GridViewColumn Header="Programme" Width="128" DisplayMemberBinding="{Binding nomProgramme}"></GridViewColumn>
-					<GridViewColumn Header="Pénom" Width="128" DisplayMemberBinding="{Binding prenomEtudiant}"></GridViewColumn>
-					<GridViewColumn Header="Nom" Width="128" DisplayMemberBinding="{Binding nomEtudiant}"></GridViewColumn>
-					<GridViewColumn Header="Date de naissance" Width="128" DisplayMemberBinding="{Binding dateNaissanceEtudiant}"></GridViewColumn>
-					<GridViewColumn Header="Sexe" Width="128" DisplayMemberBinding="{Binding sexeEtudiant}"></GridViewColumn>
+					<GridViewColumn Header="# d'étudiant" Width="100" DisplayMemberBinding="{Binding NumeroEtudiant}"></GridViewColumn>
+					<GridViewColumn Header="Programme" Width="128" DisplayMemberBinding="{Binding NomDeProgramme}"></GridViewColumn>
+					<GridViewColumn Header="Pénom" Width="110" DisplayMemberBinding="{Binding Prenom}"></GridViewColumn>
+					<GridViewColumn Header="Nom" Width="128" DisplayMemberBinding="{Binding NomDeFamille}"></GridViewColumn>
+					<GridViewColumn Header="Date de naissance" Width="128" DisplayMemberBinding="{Binding DateDeNaissance}"></GridViewColumn>
+					<GridViewColumn Header="Sexe" Width="75" DisplayMemberBinding="{Binding Sexe}"></GridViewColumn>
 				</GridView>
 			</ListView.View>
 		</ListView>

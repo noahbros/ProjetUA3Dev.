@@ -116,3 +116,18 @@ C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\Proje
 C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.g.cs
 C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ConsulterPopUp.baml
 C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.baml
+C:\Users\great\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ConsulterPopUp.g.cs
+C:\Users\great\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.g.cs
+C:\Users\great\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ConsulterPopUp.baml
+C:\Users\great\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.baml
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ConsulterPopUp.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabConsulterData.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabProgrammeData.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabStagiaireData.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal_MarkupCompile.cache
+C:\Users\Amelie Racine\Documents\GitHub\HH\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\ProjetFinal_MarkupCompile.lref
+C:\Users\Amelie Racine\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\User Controls\TabAProposData.g.cs
