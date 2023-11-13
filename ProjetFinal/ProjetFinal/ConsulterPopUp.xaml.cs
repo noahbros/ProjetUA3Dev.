@@ -49,6 +49,9 @@ namespace ProjetFinal
             Predicate<Programme> validProgramme = x => x.Nom == nomDeProgramme;
             Predicate<Stagiaire> validStagiaire = x => x.NomDeFamille == nom && x.Prenom == prenom;
 
+            //on met à jour le nom de la fenêtre
+            this.Title = "Consulter: " + prenom + " " + nom;
+
 
             Programme p = infoProgramme.Find(validProgramme);
 
