@@ -93,7 +93,7 @@ namespace ProjetFinal.User_Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProjetFinal;V1.0.0.0;component/user%20controls/tabconsulterdata.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProjetFinal;component/user%20controls/tabconsulterdata.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\User Controls\TabConsulterData.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

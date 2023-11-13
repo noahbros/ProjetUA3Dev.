@@ -165,7 +165,7 @@ namespace ProjetFinal.User_Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProjetFinal;V1.0.0.0;component/user%20controls/tabstagiairedata.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProjetFinal;component/user%20controls/tabstagiairedata.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\User Controls\TabStagiaireData.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

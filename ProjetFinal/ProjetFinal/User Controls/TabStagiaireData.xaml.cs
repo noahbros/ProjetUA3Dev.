@@ -33,7 +33,7 @@ namespace ProjetFinal.User_Controls
     /// </summary>
     public partial class TabStagiaireData : UserControl
     {
-        public ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>();
+        public static ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>();
         public ObservableCollection<Programme> listeDeProgramme = new ObservableCollection<Programme>();
 
         public TabStagiaireData()
