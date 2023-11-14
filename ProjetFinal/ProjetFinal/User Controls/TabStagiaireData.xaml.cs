@@ -199,16 +199,26 @@ namespace ProjetFinal.User_Controls
         //Efface tout les donnees dans les champs
         private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
         {
-            NumeroEtudiant.Text = "0";
-            prenomEtudiant.Text = "";
-            nomEtudiant.Text = "";
-            dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
-            programmeEtudiant.SelectedItem = null;
-            sexeHomme.IsChecked = false;
-            sexeFemme.IsChecked = false;
-            sexeAutre.IsChecked = false;
-            listesStagiaires.Clear();
-            listeStagiaire.ItemsSource = listesStagiaires;
+            if(listeStagiaire.SelectedItem != null)
+            {
+                Stagiaire stagiaireAEffacer = (Stagiaire)listeStagiaire.SelectedItem;
+
+                listesStagiaires.Remove(stagiaireAEffacer);
+            }
+            else
+            {
+                NumeroEtudiant.Text = "0";
+                prenomEtudiant.Text = "";
+                nomEtudiant.Text = "";
+                dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
+                programmeEtudiant.SelectedItem = null;
+                sexeHomme.IsChecked = false;
+                sexeFemme.IsChecked = false;
+                sexeAutre.IsChecked = false;
+                listesStagiaires.Clear();
+                listeStagiaire.ItemsSource = listesStagiaires;
+            }
+            
 
         }
     }
