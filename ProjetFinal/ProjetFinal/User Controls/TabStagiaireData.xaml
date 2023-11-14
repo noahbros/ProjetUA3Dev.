@@ -25,14 +25,14 @@
 
 		<Label Grid.Row="0" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="24"  FontFamily="Bahnschrift SemiBold SemiCondensed"></Label>
 		<Border Grid.Row="1" Grid.ColumnSpan="2"   Background="BlanchedAlmond" BorderThickness="1" BorderBrush="DarkGray" Margin="4">
-			<TextBlock Text="Ici vous pouvez enregistrer les étudiants dans la liste de stagiaire. Les informations requises sont : Le numéro d'étudiant (nombre entier réelle), le programme à quel il est inscrit, le nom et prénom de l'étudiant ainsi que sa date de naissance et son sexe." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
+			<TextBlock Text="Ici vous pouvez enregistrer les étudiants dans la liste de stagiaire. Les informations requises sont : Le numéro d'étudiant (nombre entier réelle) de 7 chiffre, le programme à quel il est inscrit, le nom et prénom de l'étudiant ainsi que sa date de naissance et son sexe." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
 		</Border>
 
 
 		<!--Saisie du numéro d'étudiant du stagiaire -->
-		<Label Content="Numéro étudiant : " Grid.Row="2" FontWeight="Bold" FontSize="16" Margin="10"/>
-		<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0" >
-			<TextBox Height="30" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="NumeroEtudiant">0</TextBox>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,35,0" VerticalAlignment="Center">
+			<Label Content="Numéro étudiant : " FontWeight="Bold" FontSize="16"/>
+            <TextBox Height="30" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="NumeroEtudiant" Text="0" GotFocus="NumeroEtudiant_GotFocus" LostFocus="NumeroEtudiant_LostFocus"/>
 			<StackPanel VerticalAlignment="Center">
 				<Button Height="15" Width="30" Content="˄" Background="Black" Foreground="White" Padding="-2" Name="Btn_AugmenteNumEtudiant" Click="Btn_AugmenteNumEtudiant_Click"/>
 				<Button Height="15" Width="30" Content="˅" Background="Black" Foreground="White" Padding="-2" Name="Btn_DecrementeNumEtudiant" Click="Btn_DecrementeNumEtudiant_Click" />
@@ -40,37 +40,37 @@
 		</StackPanel>
 
 		<!--Selection du programme -->
-		<StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal">
-			<Label Content="Programme : " FontWeight="Bold" FontSize="16" Margin="10" />
-            <ComboBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="30,0" Name="programmeEtudiant" DropDownOpened="programmeEtudiant_DropDownOpened">
+        <StackPanel Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="40,0">
+			<Label Content="Programme : " FontWeight="Bold" FontSize="16"  />
+            <ComboBox Height="30" Width="190" VerticalContentAlignment="Center" Name="programmeEtudiant" DropDownOpened="programmeEtudiant_DropDownOpened">
             </ComboBox>
 		</StackPanel>
 
 
 		<!--Saisie du prénom du stagiaire -->
-		<StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,135,0" VerticalAlignment="Center">
 			<Label Content="Prénom : "  FontWeight="Bold" FontSize="16"/>
-			<TextBox Height="30" Width="150" HorizontalAlignment="Right" Margin="77,0" VerticalContentAlignment="Center" Name="prenomEtudiant"></TextBox>
+			<TextBox Height="30" Width="150" HorizontalAlignment="Right"  VerticalContentAlignment="Center" Name="prenomEtudiant"></TextBox>
 		</StackPanel>
 
 
 		<!--Saisie du nom du stagiaire -->
-		<StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" Margin="10">
+        <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="40,0">
 			<Label Content="Nom : " FontWeight="Bold" FontSize="16"/>
-			<TextBox Height="30" Width="190" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="90,0" Name="nomEtudiant"></TextBox>
+            <TextBox Height="30" Width="190" VerticalContentAlignment="Center" Name="nomEtudiant"></TextBox>
 		</StackPanel>
 
 
 		<!--Selection de la date de naissance -->
-		<StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10">
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,25,0" VerticalAlignment="Center">
 			<Label Content="Date de naissance : " FontWeight="Bold" FontSize="16" />
 			<DatePicker Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" Name="dateNaissanceEtudiant"/>
 		</StackPanel>
 
 
 		<!--Selection du sexe du stagiaire -->
-		<StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="5" Name="sexeChoix">
-			<Label Content="Sexe : " FontWeight="Bold" FontSize="16" Margin="7,0,0,0" />
+        <StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="35,0" Name="sexeChoix">
+            <Label Content="Sexe : " FontWeight="Bold" FontSize="16" Margin="7,0,0,0" />
             <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeHomme" GroupName="sexeChoix">Homme</RadioButton>
             <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeFemme" GroupName="sexeChoix">Femme</RadioButton>
             <RadioButton VerticalAlignment="Center" Margin="10" Name="sexeAutre" GroupName="sexeChoix">Autres</RadioButton>
@@ -79,11 +79,11 @@
 
 
 		<!--Les boutons pour ajouter ou effacer les données dans les champs -->
-		<Button Content="Ajouter" Grid.Row="5" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Ajouter" Click="Btn_Ajouter_Click"/>
-		<Button Content="Effacer" Grid.Row="5" Grid.Column="1" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Effacer" Click="Btn_Effacer_Click"/>
+        <Button Content="Ajouter" Grid.Row="5" Width="150" Height="30" HorizontalAlignment="Right" Margin="75,0" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Ajouter" Click="Btn_Ajouter_Click"/>
+		<Button Content="Effacer" Grid.Row="5" Grid.Column="1" Width="150" Height="30" Margin="75,0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Effacer" Click="Btn_Effacer_Click"/>
 
 		<!--Apercu du nouveau stagiaire avant l'ajout -->
-		<ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" Name="listeStagiaire" Width="680">
+        <ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" Name="listeStagiaire" Width="680">
 			<ListView.View>
 				<GridView>
 					<GridViewColumn Header="# d'étudiant" Width="100" DisplayMemberBinding="{Binding NumeroEtudiant}"></GridViewColumn>

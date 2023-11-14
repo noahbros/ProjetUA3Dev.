@@ -43,14 +43,35 @@ namespace ProjetFinal.User_Controls
             listeDeProgramme = TabProgrammeData.listesProgrammes;
             programmeEtudiant.ItemsSource = listeDeProgramme;
         }
+        private void NumeroEtudiant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (NumeroEtudiant.Text == "0")
+            {
+                NumeroEtudiant.Text = "";
+            }
+        }
+        private void NumeroEtudiant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(NumeroEtudiant.Text))
+            {
+                NumeroEtudiant.Text = "0";
+            }
+        }
 
         private void Btn_AugmenteNumEtudiant_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 int numeroEtudiant = int.Parse(NumeroEtudiant.Text);
-                numeroEtudiant++;
-                NumeroEtudiant.Text = numeroEtudiant.ToString();
+                if (numeroEtudiant == 9999999)
+                {
+                    MessageBox.Show("Le numéro d'étudiant doit être un nombre de 7 chiffre.");
+                }
+                else
+                {
+                    numeroEtudiant++;
+                    NumeroEtudiant.Text = numeroEtudiant.ToString();
+                }  
             }
             catch (FormatException)
             {
@@ -64,19 +85,19 @@ namespace ProjetFinal.User_Controls
             {
                 if (NumeroEtudiant.Text.Length == 7 && int.TryParse(NumeroEtudiant.Text, out int numeroEtudiant))
                 {
-                    if (numeroEtudiant > 0)
+                    if (numeroEtudiant > 1000000)
                     {
                         numeroEtudiant--;
                         NumeroEtudiant.Text = numeroEtudiant.ToString();
                     }
                     else
                     {
-                        MessageBox.Show("Le numéro d'étudiant ne peut pas être négatif.");
+                        MessageBox.Show("Le numéro étudiant doit être un nombre entier de 7 chiffres.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Le numéro d'étudiant doit être un nombre entier de 7 chiffres.");
+                    MessageBox.Show("Le numéro étudiant doit être un nombre entier de 7 chiffres.");                    
                 }
             }
             catch (Exception ex)
@@ -88,14 +109,25 @@ namespace ProjetFinal.User_Controls
         {
             int champsNonRemplis =0;
 
-            int numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
+            int numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);  // Il y a une exception unhandled
             string prenomAjouter = prenomEtudiant.Text;
             string nomDeFamilleAjouter = nomEtudiant.Text;
-            string dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;
-            string nomProgrammeAjouter = programmeEtudiant.Text;
-            string sexeAjouter;
+            string dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;                                                               
+            string nomProgrammeAjouter = programmeEtudiant.Text;         
+            string sexeAjouter;                                          
 
-            if (dateDeNaissanceAjouter == null)
+            if (dateDeNaissanceAjouter != null)
+            {
+                DateTime dateNaissance = dateNaissanceEtudiant.SelectedDate.Value;
+                DateTime dateAujourdhui = DateTime.Today;
+
+                if(dateNaissance > dateAujourdhui)
+                {
+                    MessageBox.Show("La date de naissance ne peut pas être dans le future.");
+                    return;
+                } 
+            }
+            else
             {
                 champsNonRemplis++;
             }
@@ -108,11 +140,11 @@ namespace ProjetFinal.User_Controls
 
             if (sexeHomme.IsChecked == true)
             {
-                sexeAjouter = "M";
+                sexeAjouter = "Homme";
             }
             else if (sexeFemme.IsChecked == true)
             {
-                sexeAjouter = "F";
+                sexeAjouter = "Femme";
             }
             else
             {
@@ -120,16 +152,17 @@ namespace ProjetFinal.User_Controls
             }
 
 
-            if (!string.IsNullOrWhiteSpace(NumeroEtudiant.Text) && //Regarder pour le vrai code pour # etudiant
+            if (!string.IsNullOrWhiteSpace(NumeroEtudiant.Text) &&
                 !string.IsNullOrWhiteSpace(prenomEtudiant.Text) &&
                 !string.IsNullOrWhiteSpace(nomEtudiant.Text) &&
-                dateNaissanceEtudiant.SelectedDate != null) //Acceder au sexe de l'etudiant et au programme
+                !string.IsNullOrWhiteSpace(programmeEtudiant.Text) &&
+                dateNaissanceEtudiant.SelectedDate != null) 
             {
-                int numEtudiant = Convert.ToInt32(NumeroEtudiant.Text);
-                if (numEtudiant < 0)
+                //int numEtudiant = Convert.ToInt32(NumeroEtudiant.Text);
+                if (NumeroEtudiant.Text.Length != 7 || !int.TryParse(NumeroEtudiant.Text, out int numeroEtudiant))
                 {
-                    MessageBox.Show("Numéro étudiant entré invalide");
-                    // Sinon creer une espace pour mettre le message d'erreur dans la grille
+                    MessageBox.Show("Le numéro d'étudiant doit être un nombre entier de 7 chiffres.");  
+                    return;
                 }
                 else
                 {
@@ -140,6 +173,7 @@ namespace ProjetFinal.User_Controls
                     prenomEtudiant.Text = "";
                     nomEtudiant.Text = "";
                     dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
+                    programmeEtudiant.SelectedItem = null;
                     sexeHomme.IsChecked = false;
                     sexeFemme.IsChecked = false;
                     sexeAutre.IsChecked = false;
@@ -150,6 +184,7 @@ namespace ProjetFinal.User_Controls
                 MessageBox.Show("Il y a des champs vide. Veuillez remplir toutes le champs demander.");
             }
         }
+        //Ajouter tout les programmes ajouter dans l'onglet Programme a la ComboBox du choix de programme
         private void programmeEtudiant_DropDownOpened(object sender, EventArgs e)
         {
             programmeEtudiant.ItemsSource = TabProgrammeData.listesProgrammes.Select(p => p.Nom);
@@ -161,8 +196,17 @@ namespace ProjetFinal.User_Controls
             }
 
         }
+        //Efface tout les donnees dans les champs
         private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
         {
+            NumeroEtudiant.Text = "0";
+            prenomEtudiant.Text = "";
+            nomEtudiant.Text = "";
+            dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
+            programmeEtudiant.SelectedItem = null;
+            sexeHomme.IsChecked = false;
+            sexeFemme.IsChecked = false;
+            sexeAutre.IsChecked = false;
             listesStagiaires.Clear();
             listeStagiaire.ItemsSource = listesStagiaires;
 
