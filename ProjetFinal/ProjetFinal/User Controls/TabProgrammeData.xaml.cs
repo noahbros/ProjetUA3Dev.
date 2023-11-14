@@ -73,8 +73,13 @@ namespace ProjetFinal.User_Controls
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            listesProgrammes.Clear();
-            lvProgramme.ItemsSource = listesProgrammes;
+            MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste de programmes existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                listesProgrammes.Clear();
+                lvProgramme.ItemsSource = listesProgrammes;
+            }
         }
     }
 }
