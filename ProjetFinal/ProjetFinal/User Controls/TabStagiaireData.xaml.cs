@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace ProjetFinal.User_Controls
 {
 
-
+    
     public class Stagiaire
     {
         public string Prenom { get; set; }
@@ -33,15 +33,15 @@ namespace ProjetFinal.User_Controls
     /// </summary>
     public partial class TabStagiaireData : UserControl
     {
-        public static ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>();
-        public ObservableCollection<Programme> listeDeProgramme = new ObservableCollection<Programme>();
+        public static ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>(); ///Liste statique contenant tout les entrées (objet Stagiaire) de stagiaires.
+        public ObservableCollection<Programme> listeDeProgramme = new ObservableCollection<Programme>(); ///Liste de réference pour la liste statique dans programme.cs.
 
         public TabStagiaireData()
         {
             InitializeComponent();
-            listeStagiaire.ItemsSource = listesStagiaires;
-            listeDeProgramme = TabProgrammeData.listesProgrammes;
-            programmeEtudiant.ItemsSource = listeDeProgramme;
+            listeStagiaire.ItemsSource = listesStagiaires; //Liste d'affichage dans la tab stagiaire.
+            listeDeProgramme = TabProgrammeData.listesProgrammes; //Copie la liste dans programme pour être utiliser plus tard.
+            programmeEtudiant.ItemsSource = listeDeProgramme; //ComboBox contenant l'information des entrées dans programmes en utilisant la liste de réference.
         }
         private void NumeroEtudiant_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -105,6 +105,8 @@ namespace ProjetFinal.User_Controls
                 MessageBox.Show("Une erreur c'est produite : "+ex.Message);
             }
         }
+
+        //Fonctionalité du boutton "Ajouté" dans stagiaires.
         private void Btn_Ajouter_Click(object sender, RoutedEventArgs e)
         {
             int champsNonRemplis =0;
@@ -116,6 +118,7 @@ namespace ProjetFinal.User_Controls
             string nomProgrammeAjouter = programmeEtudiant.Text;         
             string sexeAjouter;                                          
 
+            //Reset la date après avoir pesé le boutton.
             if (dateDeNaissanceAjouter != null)
             {
                 DateTime dateNaissance = dateNaissanceEtudiant.SelectedDate.Value;
@@ -132,12 +135,14 @@ namespace ProjetFinal.User_Controls
                 champsNonRemplis++;
             }
 
+            //Associe les données des entrées dans stagiaires à une variable temporaire.
             numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
             prenomAjouter = prenomEtudiant.Text;
             nomDeFamilleAjouter = nomEtudiant.Text;
             dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;
             nomProgrammeAjouter = programmeEtudiant.Text;
 
+            //Condition pour le sexe.
             if (sexeHomme.IsChecked == true)
             {
                 sexeAjouter = "Homme";
@@ -166,8 +171,8 @@ namespace ProjetFinal.User_Controls
                 }
                 else
                 {
-                    listesStagiaires.Add(new Stagiaire { Prenom = prenomAjouter, NomDeFamille = nomDeFamilleAjouter, NumeroEtudiant = numeroEtudiantAjouter, DateDeNaissance = dateDeNaissanceAjouter, Sexe = sexeAjouter, NomDeProgramme = nomProgrammeAjouter });
-                    listeStagiaire.ItemsSource = listesStagiaires;
+                    listesStagiaires.Add(new Stagiaire { Prenom = prenomAjouter, NomDeFamille = nomDeFamilleAjouter, NumeroEtudiant = numeroEtudiantAjouter, DateDeNaissance = dateDeNaissanceAjouter, Sexe = sexeAjouter, NomDeProgramme = nomProgrammeAjouter }); //Utilise les variables précédente pour faire un objet Stagiaire et la stocke dans la liste de stagiaire.
+                    listeStagiaire.ItemsSource = listesStagiaires; //Affiche le résultat.
                     //Resets data.
                     NumeroEtudiant.Text = "0";
                     prenomEtudiant.Text = "";
@@ -189,6 +194,7 @@ namespace ProjetFinal.User_Controls
         {
             programmeEtudiant.ItemsSource = TabProgrammeData.listesProgrammes.Select(p => p.Nom);
 
+            //Si il ne contient aucun item dans la liste de réference, le ComboBox ne peut être ouvert.
             if (programmeEtudiant.HasItems == false)
             {
                 programmeEtudiant.IsDropDownOpen = false;
@@ -196,15 +202,18 @@ namespace ProjetFinal.User_Controls
             }
 
         }
-        //Efface tout les donnees dans les champs
+
+        //Fonctionalité pour le boutton "supprimer" dans stagiaires.
         private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
         {
+            //Vérifie si une sélection a été fait.
             if(listeStagiaire.SelectedItem != null)
             {
                 Stagiaire stagiaireAEffacer = (Stagiaire)listeStagiaire.SelectedItem;
 
                 listesStagiaires.Remove(stagiaireAEffacer);
             }
+            //Sinon efface tout la liste et reset tout les.
             else
             {
                 NumeroEtudiant.Text = "0";
