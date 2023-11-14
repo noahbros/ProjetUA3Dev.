@@ -37,6 +37,7 @@ namespace ProjetFinal.User_Controls
         {
             int numeroProgramme;
             int moisProgramme;
+            string nomProgramme;
 
             //Checks empty fields
             if (Numero.Text == "" || Nom.Text == "" || Mois.Text == "")
@@ -45,10 +46,13 @@ namespace ProjetFinal.User_Controls
                 return;
             }
 
+            //on assigne une valeur à nomProgramme
+            nomProgramme = Nom.Text;
+
             //Checks non-allowed values, and creates an object of the new Programme.
-            if(int.TryParse(Numero.Text, out numeroProgramme) && int.TryParse(Mois.Text, out moisProgramme))
+            if (int.TryParse(Numero.Text, out numeroProgramme) && int.TryParse(Mois.Text, out moisProgramme))
             {
-                if(numeroProgramme.ToString().Count() < 7 || numeroProgramme.ToString().Count() > 7 || moisProgramme < 0 || moisProgramme > 60)
+                if(numeroProgramme.ToString().Count() < 7 || numeroProgramme.ToString().Count() > 7 || moisProgramme < 0 || moisProgramme > 60 || !nomProgramme.All(Char.IsLetter))
                 {
                     MessageBox.Show("S.V.P respecter tout les contraintes imposer pour chaques champs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
