@@ -80,7 +80,7 @@
 
 		<!--Les boutons pour ajouter ou effacer les données dans les champs -->
         <Button Content="Ajouter" Grid.Row="5" Width="150" Height="30" HorizontalAlignment="Right" Margin="75,0" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Ajouter" Click="Btn_Ajouter_Click"/>
-		<Button Content="Effacer" Grid.Row="5" Grid.Column="1" Width="150" Height="30" Margin="75,0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Effacer" Click="Btn_Effacer_Click"/>
+		<Button Content="Effacer collection/item" Grid.Row="5" Grid.Column="1" Width="150" Height="30" Margin="75,0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightSlateGray" FontWeight="Bold" FontStyle="Italic" Name="Btn_Effacer" Click="Btn_Effacer_Click"/>
 
 		<!--Apercu du nouveau stagiaire avant l'ajout -->
         <ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" Name="listeStagiaire" Width="680">
