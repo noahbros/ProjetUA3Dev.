@@ -109,7 +109,7 @@ namespace ProjetFinal.User_Controls
         {
             int champsNonRemplis =0;
 
-            int numeroEtudiantAjouter;
+            //int numeroEtudiantAjouter;
             string prenomAjouter;
             string nomDeFamilleAjouter;
             string dateDeNaissanceAjouter;                                                               
@@ -136,7 +136,10 @@ namespace ProjetFinal.User_Controls
                     return;
             }
 
-            numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
+            
+            //numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
+
+
             prenomAjouter = prenomEtudiant.Text;
             nomDeFamilleAjouter = nomEtudiant.Text;
             dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;
@@ -172,13 +175,14 @@ namespace ProjetFinal.User_Controls
                 else
                 {
                     //Ajout du nouveau stagiaire a la liste
-                    listesStagiaires.Add(new Stagiaire { Prenom = prenomAjouter, NomDeFamille = nomDeFamilleAjouter, NumeroEtudiant = numeroEtudiantAjouter, DateDeNaissance = dateDeNaissanceAjouter, Sexe = sexeAjouter, NomDeProgramme = nomProgrammeAjouter });
+                    listesStagiaires.Add(new Stagiaire { Prenom = prenomAjouter, NomDeFamille = nomDeFamilleAjouter, NumeroEtudiant = numeroEtudiant, DateDeNaissance = dateDeNaissanceAjouter, Sexe = sexeAjouter, NomDeProgramme = nomProgrammeAjouter });
                     listeStagiaire.ItemsSource = listesStagiaires;
+
                     //Resets data.
                     NumeroEtudiant.Text = "0";
                     prenomEtudiant.Text = "";
                     nomEtudiant.Text = "";
-                    dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
+                    dateNaissanceEtudiant.SelectedDate = null;
                     programmeEtudiant.SelectedItem = null;
                     sexeHomme.IsChecked = false;
                     sexeFemme.IsChecked = false;
@@ -230,7 +234,7 @@ namespace ProjetFinal.User_Controls
                     NumeroEtudiant.Text = "0";
                     prenomEtudiant.Text = "";
                     nomEtudiant.Text = "";
-                    dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
+                    dateNaissanceEtudiant.SelectedDate = null;
                     programmeEtudiant.SelectedItem = null;
                     sexeHomme.IsChecked = false;
                     sexeFemme.IsChecked = false;
