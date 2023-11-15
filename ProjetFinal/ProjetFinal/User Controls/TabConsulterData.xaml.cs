@@ -22,14 +22,15 @@ namespace ProjetFinal.User_Controls
     /// 
     public partial class TabConsulterData : UserControl
     {
-        public static ObservableCollection<Stagiaire> searchCollection = new ObservableCollection<Stagiaire>();
-        public static int lvConsulterIndex;
+        public static ObservableCollection<Stagiaire> searchCollection = new ObservableCollection<Stagiaire>(); //Collection utilisé pour filtrer les items dans la collection stagiaires de stagiaires.cs pour l'afficher dans le listView de la tab Consulter.
+        public static int lvConsulterIndex; //Variable utilisé pour que le pop-up identifie le stagiaire et ses données.
         public TabConsulterData()
         {
             InitializeComponent();
             lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
         }
 
+        ///Fonctionalités pour le boutton "Rechercher" dans la tab Consulter.
         private void Boutton_Rechercher_Click(object sender, RoutedEventArgs e)
         {
             lvConsulter.ItemsSource = null;
@@ -38,22 +39,26 @@ namespace ProjetFinal.User_Controls
             string prenomSearch = searchPrenom.Text.ToLower();
             string programmeSearch = cmbProgrammes.Text;
 
-            
+            //Affiche tout les données si les champs sont vide. (default view)
             if(nomSearch == "" && prenomSearch == "" && programmeSearch == "Aucun")
             {
                 lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
                 return;
             }
 
-
+            //Filtre la collection de stagiaires dans stagiaires et l'associe à la collection filtrer.
             foreach (Stagiaire s in TabStagiaireData.listesStagiaires)
             {
+                //confirmateur pour savoir si nous avons effectivements un "match" dans la collection de stagiaires dans stagiaires.cs.
                 int confirmerNom = 0;
                 int confirmerPrenom = 0;
                 int confirmerProgramme = 0;
+
+                //variable pour vérifier si un champ à été utilisé/remplis.
                 bool nomSearched = false;
                 bool prenomSearched = false;
                 bool programmeSearched = false;
+
 
                 char[] valueNom = s.NomDeFamille.ToLower().ToCharArray();
                 char[] searchedNom = nomSearch.ToCharArray();
@@ -64,7 +69,7 @@ namespace ProjetFinal.User_Controls
                 char[] valueProgramme = s.NomDeProgramme.ToCharArray();
                 char[] searchedProgramme = programmeSearch.ToCharArray();
 
-                //Checks if "nom" has a value.
+                //Checks if field "nom" has a value.
                 if (nomSearch != "")
                 {
                     nomSearched = true;
@@ -82,7 +87,7 @@ namespace ProjetFinal.User_Controls
                     }
                 }
 
-                //Checks if "prenom" has a value.
+                //Checks if the field "prenom" has a value.
                 if (prenomSearch != "")
                 {
                     prenomSearched = true;
@@ -99,6 +104,7 @@ namespace ProjetFinal.User_Controls
                     }
                 }
 
+                //Checks if the comboBox is not set to "Aucun".
                 if (programmeSearch != "Aucun")
                 {
                     programmeSearched = true;
@@ -117,16 +123,16 @@ namespace ProjetFinal.User_Controls
                 //If all fields are used.
                 if(nomSearched && prenomSearched && programmeSearched)
                 {
-                    if(confirmerProgramme == programmeSearch.Length && confirmerNom == nomSearch.Length && confirmerPrenom == prenomSearch.Length)
+                    if(confirmerProgramme == programmeSearch.Length && confirmerNom == nomSearch.Length && confirmerPrenom == prenomSearch.Length) //Filter
                     {
-                        searchCollection.Add(s);
+                        searchCollection.Add(s); 
                     }
                     continue;
                 }
                 //If only nom and prenom used.
                 if(nomSearched && prenomSearched && !programmeSearched)
                 {
-                    if(confirmerNom ==  nomSearch.Length && confirmerPrenom == prenomSearch.Length)
+                    if(confirmerNom ==  nomSearch.Length && confirmerPrenom == prenomSearch.Length) //Filter
                     {
                         searchCollection.Add(s);
                     }
@@ -135,7 +141,7 @@ namespace ProjetFinal.User_Controls
                 //If only nom and programme used.
                 else if(nomSearched && !prenomSearched && programmeSearched)
                 {
-                    if(confirmerNom == nomSearch.Length && confirmerProgramme == programmeSearch.Length)
+                    if(confirmerNom == nomSearch.Length && confirmerProgramme == programmeSearch.Length) //Filter
                     {
                         searchCollection.Add(s);
                     }
@@ -191,19 +197,20 @@ namespace ProjetFinal.User_Controls
 
         }
 
+        //Active lorsque quelqu'un ouvre le ComboBox
         private void cmbProgrammes_DropDownOpened(object sender, EventArgs e)
         {
            
-            foreach(Programme p in TabProgrammeData.listesProgrammes)
+            foreach(Programme p in TabProgrammeData.listesProgrammes) //itère au travers des éléments dans la collection statique de programme dans programme.cs
             {
-                if (cmbProgrammes.Items.Contains(p.Nom))
+                if (cmbProgrammes.Items.Contains(p.Nom)) //Vérifie si le combobox contient déjà la valeur.
                 {
                     continue;
                 }
-                cmbProgrammes.Items.Add(p.Nom);
+                cmbProgrammes.Items.Add(p.Nom); 
             }
 
-            if(cmbProgrammes.HasItems == false)
+            if(cmbProgrammes.HasItems == false) //Vérifie si le combobox n'a aucune valeur, si oui on restricte l'options d'ouvrire le combobox.
             {
                 cmbProgrammes.IsDropDownOpen = false;
                 return;

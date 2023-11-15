@@ -28,15 +28,18 @@ namespace ProjetFinal.User_Controls
     }
     public partial class TabProgrammeData : UserControl
     {
-        public static ObservableCollection<Programme> listesProgrammes = new ObservableCollection<Programme>();
+        public static ObservableCollection<Programme> listesProgrammes = new ObservableCollection<Programme>(); //Collection statique qui stocke tout les entrées (objet Programme) de programmes.
         public TabProgrammeData()
         {
             InitializeComponent();
         }
+        
+        ///Fonctionalité pour le boutton "Ajouter" dans la tab "programmes".
         public void Ajouter_Click(object sender, RoutedEventArgs e)
         {
             int numeroProgramme;
             int moisProgramme;
+            string nomProgramme;
 
             //Checks empty fields
             if (Numero.Text == "" || Nom.Text == "" || Mois.Text == "")
@@ -45,32 +48,41 @@ namespace ProjetFinal.User_Controls
                 return;
             }
 
-            //Checks non-allowed values, and creates an object of the new Programme.
-            if(int.TryParse(Numero.Text, out numeroProgramme) && int.TryParse(Mois.Text, out moisProgramme))
+            //on assigne une valeur à nomProgramme
+            nomProgramme = Nom.Text;
+
+            //Checks non-allowed values, and creates an object of the new Programme if the values are accepted.
+            if (int.TryParse(Numero.Text, out numeroProgramme) && int.TryParse(Mois.Text, out moisProgramme))
             {
-                if(numeroProgramme.ToString().Count() < 7 || numeroProgramme.ToString().Count() > 7 || moisProgramme < 0 || moisProgramme > 60)
+                if(numeroProgramme.ToString().Count() < 7 || numeroProgramme.ToString().Count() > 7 || moisProgramme < 0 || moisProgramme > 60 || !nomProgramme.All(Char.IsLetter)) //Specific constraints for variables.
                 {
                     MessageBox.Show("S.V.P respecter tout les contraintes imposer pour chaques champs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                listesProgrammes.Add(new Programme { Numero = numeroProgramme, Nom = Nom.Text, Duree = moisProgramme });
+                listesProgrammes.Add(new Programme { Numero = numeroProgramme, Nom = Nom.Text, Duree = moisProgramme }); //Creation of the new object.
                 lvProgramme.ItemsSource = listesProgrammes;
                 Numero.Text = "";
                 Mois.Text = "";
                 Nom.Text = "";
             }
-            else
-            {
+            else //executes when Numero and Mois are not numbers.
+            {   
                 MessageBox.Show("S.V.P respecter tout les contraintes imposer pour chaques champs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
         }
 
+        ///Fonctionalité pour le boutton "Supprimer" dans la tab "programmes".
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            listesProgrammes.Clear();
-            lvProgramme.ItemsSource = listesProgrammes;
+            MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste de programmes existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                listesProgrammes.Clear();
+                lvProgramme.ItemsSource = listesProgrammes;
+            }
         }
     }
 }
