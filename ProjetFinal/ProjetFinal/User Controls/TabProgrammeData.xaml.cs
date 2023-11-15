@@ -105,34 +105,6 @@ namespace ProjetFinal.User_Controls
 
             }
 
-
-
-            /*
-            if (listeStagiaire.SelectedItem != null) // Efface un seule stagiaire saisi dans la listView
-            {
-                
-            }
-            else         //Efface tous les stagiaires dans la listView si aucun stagiaire n'a ete saisi
-            {
-                //On confirme que l'utilisateur veut bel et bien effacer la liste
-                MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste des stagiaires existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    NumeroEtudiant.Text = "0";
-                    prenomEtudiant.Text = "";
-                    nomEtudiant.Text = "";
-                    dateNaissanceEtudiant.SelectedDate = null;
-                    programmeEtudiant.SelectedItem = null;
-                    sexeHomme.IsChecked = false;
-                    sexeFemme.IsChecked = false;
-                    sexeAutre.IsChecked = false;
-                    listesStagiaires.Clear();
-                    listeStagiaire.ItemsSource = listesStagiaires;
-                }
-
-            }
-            */
         }
     }
 }
