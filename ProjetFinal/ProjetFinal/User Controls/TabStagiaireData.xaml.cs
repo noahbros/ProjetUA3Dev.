@@ -109,7 +109,6 @@ namespace ProjetFinal.User_Controls
         {
             int champsNonRemplis =0;
 
-            //int numeroEtudiantAjouter;
             string prenomAjouter;
             string nomDeFamilleAjouter;
             string dateDeNaissanceAjouter;                                                               
@@ -135,9 +134,6 @@ namespace ProjetFinal.User_Controls
                 MessageBox.Show("Veuillez saisir une date de naissance.");
                     return;
             }
-
-            
-            //numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
 
 
             prenomAjouter = prenomEtudiant.Text;

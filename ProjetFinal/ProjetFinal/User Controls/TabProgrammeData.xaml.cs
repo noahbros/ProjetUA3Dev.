@@ -76,13 +76,63 @@ namespace ProjetFinal.User_Controls
         ///Fonctionalité pour le boutton "Supprimer" dans la tab "programmes".
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste de programmes existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            
 
-            if (result == MessageBoxResult.Yes)
+            if(lvProgramme.SelectedItem != null)
             {
-                listesProgrammes.Clear();
-                lvProgramme.ItemsSource = listesProgrammes;
+                //on obtient le programme à effacer
+                Programme programme = (Programme)lvProgramme.SelectedItem;
+
+                String message = "Voulez-vous effacer «" + programme.Nom + "» de la liste des programmes";
+
+                MessageBoxResult result = MessageBox.Show(message, "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    listesProgrammes.Remove(programme);
+                    //listesStagiaires.Remove(stagiaireAEffacer);
+                }
+
+            } else
+            {
+                MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste de programmes existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    listesProgrammes.Clear();
+                    lvProgramme.ItemsSource = listesProgrammes;
+                }
+
             }
+
+
+
+            /*
+            if (listeStagiaire.SelectedItem != null) // Efface un seule stagiaire saisi dans la listView
+            {
+                
+            }
+            else         //Efface tous les stagiaires dans la listView si aucun stagiaire n'a ete saisi
+            {
+                //On confirme que l'utilisateur veut bel et bien effacer la liste
+                MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste des stagiaires existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    NumeroEtudiant.Text = "0";
+                    prenomEtudiant.Text = "";
+                    nomEtudiant.Text = "";
+                    dateNaissanceEtudiant.SelectedDate = null;
+                    programmeEtudiant.SelectedItem = null;
+                    sexeHomme.IsChecked = false;
+                    sexeFemme.IsChecked = false;
+                    sexeAutre.IsChecked = false;
+                    listesStagiaires.Clear();
+                    listeStagiaire.ItemsSource = listesStagiaires;
+                }
+
+            }
+            */
         }
     }
 }
