@@ -54,7 +54,7 @@ namespace ProjetFinal.User_Controls
             //Checks non-allowed values, and creates an object of the new Programme if the values are accepted.
             if (int.TryParse(Numero.Text, out numeroProgramme) && int.TryParse(Mois.Text, out moisProgramme))
             {
-                if(numeroProgramme.ToString().Count() < 7 || numeroProgramme.ToString().Count() > 7 || moisProgramme < 0 || moisProgramme > 60 || !nomProgramme.All(Char.IsLetter)) //Specific constraints for variables.
+                if(numeroProgramme.ToString().Count() < 7 || numeroProgramme.ToString().Count() > 7 || moisProgramme <= 0 || moisProgramme > 60 || !nomProgramme.All(Char.IsLetter)) //Specific constraints for variables.
                 {
                     MessageBox.Show("S.V.P respecter tout les contraintes imposer pour chaques champs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;

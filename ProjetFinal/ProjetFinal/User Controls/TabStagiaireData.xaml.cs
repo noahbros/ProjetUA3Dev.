@@ -205,24 +205,40 @@ namespace ProjetFinal.User_Controls
         //Efface les donnees dans les champs
         private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
         {
-            if(listeStagiaire.SelectedItem != null) // Efface un seule stagiaire saisi dans la listView
+
+            if (listeStagiaire.SelectedItem != null) // Efface un seule stagiaire saisi dans la listView
             {
+                //on obtient la stagiaire à effacer
                 Stagiaire stagiaireAEffacer = (Stagiaire)listeStagiaire.SelectedItem;
 
-                listesStagiaires.Remove(stagiaireAEffacer);
+                String message = "Voulez-vous effacer «" + stagiaireAEffacer.Prenom + " " + stagiaireAEffacer.NomDeFamille + "» de la liste des stagiaires";
+
+                MessageBoxResult result = MessageBox.Show(message, "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    listesStagiaires.Remove(stagiaireAEffacer);
+                }
             }
             else         //Efface tous les stagiaires dans la listView si aucun stagiaire n'a ete saisi
             {
-                NumeroEtudiant.Text = "0";
-                prenomEtudiant.Text = "";
-                nomEtudiant.Text = "";
-                dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
-                programmeEtudiant.SelectedItem = null;
-                sexeHomme.IsChecked = false;
-                sexeFemme.IsChecked = false;
-                sexeAutre.IsChecked = false;
-                listesStagiaires.Clear();
-                listeStagiaire.ItemsSource = listesStagiaires;
+                //On confirme que l'utilisateur veut bel et bien effacer la liste
+                MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste des stagiaires existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    NumeroEtudiant.Text = "0";
+                    prenomEtudiant.Text = "";
+                    nomEtudiant.Text = "";
+                    dateNaissanceEtudiant.SelectedDate = DateTime.Today.Date;
+                    programmeEtudiant.SelectedItem = null;
+                    sexeHomme.IsChecked = false;
+                    sexeFemme.IsChecked = false;
+                    sexeAutre.IsChecked = false;
+                    listesStagiaires.Clear();
+                    listeStagiaire.ItemsSource = listesStagiaires;
+                }
+                
             }
             
 
