@@ -43,14 +43,14 @@ namespace ProjetFinal.User_Controls
             listeDeProgramme = TabProgrammeData.listesProgrammes;
             programmeEtudiant.ItemsSource = listeDeProgramme;
         }
-        private void NumeroEtudiant_GotFocus(object sender, RoutedEventArgs e)
+        private void NumeroEtudiant_GotFocus(object sender, RoutedEventArgs e) //Lorsque l'utilisateur clique sur le textBox NumeroEtudiant le default texte "0" va disparaitre
         {
             if (NumeroEtudiant.Text == "0")
             {
                 NumeroEtudiant.Text = "";
             }
         }
-        private void NumeroEtudiant_LostFocus(object sender, RoutedEventArgs e)
+        private void NumeroEtudiant_LostFocus(object sender, RoutedEventArgs e) //Lorsque l'utilisateur sort du textBox NumeroEtudiant s'il n'y a pas eu de donnee entre la valeur par defaut "0" va s'afficher
         {
             if (string.IsNullOrWhiteSpace(NumeroEtudiant.Text))
             {
@@ -58,7 +58,7 @@ namespace ProjetFinal.User_Controls
             }
         }
 
-        private void Btn_AugmenteNumEtudiant_Click(object sender, RoutedEventArgs e)
+        private void Btn_AugmenteNumEtudiant_Click(object sender, RoutedEventArgs e) //Le NumeroEtudiant va augmenter de +1  seulement si le numero est inferieur a 9999999 et est un entier
         {
             try
             {
@@ -79,7 +79,7 @@ namespace ProjetFinal.User_Controls
             }
         }
 
-        private void Btn_DecrementeNumEtudiant_Click(object sender, RoutedEventArgs e)//Diminue le numero etudiant de -1
+        private void Btn_DecrementeNumEtudiant_Click(object sender, RoutedEventArgs e) //Le NumeroEtudiant va diminuer de -1 seulement si le numero est superieur a 1000000 et un entier
         {
             try
             {
@@ -109,19 +109,21 @@ namespace ProjetFinal.User_Controls
         {
             int champsNonRemplis =0;
 
-            int numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);  // Il y a une exception unhandled
-            string prenomAjouter = prenomEtudiant.Text;
-            string nomDeFamilleAjouter = nomEtudiant.Text;
-            string dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;                                                               
-            string nomProgrammeAjouter = programmeEtudiant.Text;         
-            string sexeAjouter;                                          
+            int numeroEtudiantAjouter;
+            string prenomAjouter;
+            string nomDeFamilleAjouter;
+            string dateDeNaissanceAjouter;                                                               
+            string nomProgrammeAjouter;         
+            string sexeAjouter;
 
-            if (dateDeNaissanceAjouter != null)
-            {
-                DateTime dateNaissance = dateNaissanceEtudiant.SelectedDate.Value;
+            //Verification de la date de naissance
+            DateTime? dateNaissance = dateNaissanceEtudiant.SelectedDate; 
+            if (dateNaissance != null)
+            {                
+                DateTime dateNaissanceValue = dateNaissance.Value;
                 DateTime dateAujourdhui = DateTime.Today;
 
-                if(dateNaissance > dateAujourdhui)
+                if(dateNaissanceValue > dateAujourdhui)
                 {
                     MessageBox.Show("La date de naissance ne peut pas être dans le future.");
                     return;
@@ -130,6 +132,8 @@ namespace ProjetFinal.User_Controls
             else
             {
                 champsNonRemplis++;
+                MessageBox.Show("Veuillez saisir une date de naissance.");
+                    return;
             }
 
             numeroEtudiantAjouter = int.Parse(NumeroEtudiant.Text);
@@ -138,6 +142,7 @@ namespace ProjetFinal.User_Controls
             dateDeNaissanceAjouter = dateNaissanceEtudiant.Text;
             nomProgrammeAjouter = programmeEtudiant.Text;
 
+            //Saisir le sexe pour l'affichage
             if (sexeHomme.IsChecked == true)
             {
                 sexeAjouter = "Homme";
@@ -151,14 +156,14 @@ namespace ProjetFinal.User_Controls
                 sexeAjouter = "Autres";
             }
 
-
+            //Verification des champs obligatoires
             if (!string.IsNullOrWhiteSpace(NumeroEtudiant.Text) &&
                 !string.IsNullOrWhiteSpace(prenomEtudiant.Text) &&
                 !string.IsNullOrWhiteSpace(nomEtudiant.Text) &&
                 !string.IsNullOrWhiteSpace(programmeEtudiant.Text) &&
                 dateNaissanceEtudiant.SelectedDate != null) 
             {
-                //int numEtudiant = Convert.ToInt32(NumeroEtudiant.Text);
+                //Verification du format du NumeroEtudiant
                 if (NumeroEtudiant.Text.Length != 7 || !int.TryParse(NumeroEtudiant.Text, out int numeroEtudiant))
                 {
                     MessageBox.Show("Le numéro d'étudiant doit être un nombre entier de 7 chiffres.");  
@@ -166,6 +171,7 @@ namespace ProjetFinal.User_Controls
                 }
                 else
                 {
+                    //Ajout du nouveau stagiaire a la liste
                     listesStagiaires.Add(new Stagiaire { Prenom = prenomAjouter, NomDeFamille = nomDeFamilleAjouter, NumeroEtudiant = numeroEtudiantAjouter, DateDeNaissance = dateDeNaissanceAjouter, Sexe = sexeAjouter, NomDeProgramme = nomProgrammeAjouter });
                     listeStagiaire.ItemsSource = listesStagiaires;
                     //Resets data.
@@ -184,7 +190,7 @@ namespace ProjetFinal.User_Controls
                 MessageBox.Show("Il y a des champs vide. Veuillez remplir toutes le champs demander.");
             }
         }
-        //Ajouter tout les programmes ajouter dans l'onglet Programme a la ComboBox du choix de programme
+        //Afficher tout les programmes ajouter dans l'onglet Programme a la ComboBox du choix de programme
         private void programmeEtudiant_DropDownOpened(object sender, EventArgs e)
         {
             programmeEtudiant.ItemsSource = TabProgrammeData.listesProgrammes.Select(p => p.Nom);
@@ -196,16 +202,16 @@ namespace ProjetFinal.User_Controls
             }
 
         }
-        //Efface tout les donnees dans les champs
+        //Efface les donnees dans les champs
         private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
         {
-            if(listeStagiaire.SelectedItem != null)
+            if(listeStagiaire.SelectedItem != null) // Efface un seule stagiaire saisi dans la listView
             {
                 Stagiaire stagiaireAEffacer = (Stagiaire)listeStagiaire.SelectedItem;
 
                 listesStagiaires.Remove(stagiaireAEffacer);
             }
-            else
+            else         //Efface tous les stagiaires dans la listView si aucun stagiaire n'a ete saisi
             {
                 NumeroEtudiant.Text = "0";
                 prenomEtudiant.Text = "";
