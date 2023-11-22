@@ -1,7 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,9 +33,26 @@ namespace ProjetFinal.User_Controls
     public partial class TabProgrammeData : UserControl
     {
         public static ObservableCollection<Programme> listesProgrammes = new ObservableCollection<Programme>(); //Collection statique qui stocke tout les entrées (objet Programme) de programmes.
+        public static DataTable dt_programme = new DataTable();
+
+        //Liaison de la base de données
+        private void linkdb()
+        {
+            MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;PASSWORD=");
+            MySqlCommand getAll = new MySqlCommand("select * from programmes", connection);
+            connection.Open();
+            DataTable dt_programme = new DataTable();
+            dt_programme.Load(getAll.ExecuteReader());
+            dataGrid_programmes.ItemsSource = dt_programme.DefaultView;
+            connection.Close();
+        }
+
+
         public TabProgrammeData()
         {
             InitializeComponent();
+            linkdb();
+
         }
         
         ///Fonctionalité pour le boutton "Ajouter" dans la tab "programmes".
@@ -59,8 +80,40 @@ namespace ProjetFinal.User_Controls
                     MessageBox.Show("S.V.P respecter tout les contraintes imposer pour chaques champs", "Error 101 : Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                listesProgrammes.Add(new Programme { Numero = numeroProgramme, Nom = Nom.Text, Duree = moisProgramme }); //Creation of the new object.
-                lvProgramme.ItemsSource = listesProgrammes;
+                
+                //Vérifie si le numéro de programme est déjà dans la BDD.
+                MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;PASSWORD=");
+                conn.Open();
+                MySqlCommand uniqueChecker = new MySqlCommand();
+
+                uniqueChecker.CommandText = "SELECT * FROM programmes WHERE numeroProgramme = @numero";
+                uniqueChecker.Parameters.AddWithValue("@numero", numeroProgramme);
+                uniqueChecker.Connection = conn;
+                var checker = uniqueChecker.ExecuteScalar();
+                if(checker != null)
+                {
+                    MessageBox.Show("Une des valeurs dans les champs contient une valeur déjà existante dans la BDD, veuillez réessayer.", "Error 200 : Duplicate variables", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                //Rajoute les données dans la BDD
+                MySqlCommand addProgramme = new MySqlCommand();
+                addProgramme.CommandText = "INSERT INTO programmes(numeroProgramme, nom, duree) VALUES (@numero, @nom, @duree)";
+                addProgramme.Parameters.AddWithValue("@numero", numeroProgramme);
+                addProgramme.Parameters.AddWithValue("@nom", nomProgramme);
+                addProgramme.Parameters.AddWithValue("@duree", moisProgramme);
+                addProgramme.Connection = conn;
+                int success = addProgramme.ExecuteNonQuery();
+                if(success == 1)
+                {
+                    Console.WriteLine("Data added successfully.");
+                    linkdb();
+                }
+                else
+                {
+                    Console.WriteLine("ERROR whilst adding data to database.");
+                }
+
+               
                 Numero.Text = "";
                 Mois.Text = "";
                 Nom.Text = "";
@@ -76,35 +129,41 @@ namespace ProjetFinal.User_Controls
         ///Fonctionalité pour le boutton "Supprimer" dans la tab "programmes".
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
+            MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;PASSWORD=");
+            conn.Open();
+            DataRowView item = (DataRowView)dataGrid_programmes.SelectedItem;
             
-
-            if(lvProgramme.SelectedItem != null)
+            //If nothing is selected and we press the button.
+            if(item == null)
             {
-                //on obtient le programme à effacer
-                Programme programme = (Programme)lvProgramme.SelectedItem;
-
-                String message = "Voulez-vous effacer «" + programme.Nom + "» de la liste des programmes";
-
+                string message = "Voulez-vous effacer tout les éléments de la table programmes?";
                 MessageBoxResult result = MessageBox.Show(message, "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
+                if(result == MessageBoxResult.Yes)
                 {
-                    listesProgrammes.Remove(programme);
-                    //listesStagiaires.Remove(stagiaireAEffacer);
+                    MySqlCommand removeAllProgramme = new MySqlCommand();
+                    removeAllProgramme.CommandText = "DELETE FROM programmes";
+                    removeAllProgramme.Connection = conn;
+                    removeAllProgramme.ExecuteNonQuery();
+                    linkdb();
                 }
-
-            } else
-            {
-                MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste de programmes existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
+                else
                 {
-                    listesProgrammes.Clear();
-                    lvProgramme.ItemsSource = listesProgrammes;
+                    return;
                 }
-
+                return;
             }
+            else //If one element is selected and we press the button.
+            {
+                string itemId = item.Row[0].ToString();
 
+                MySqlCommand removeSelectedProgramme = new MySqlCommand();
+                removeSelectedProgramme.CommandText = "DELETE FROM programmes WHERE numeroProgramme = @numselect";
+                removeSelectedProgramme.Parameters.AddWithValue("@numselect", itemId);
+                removeSelectedProgramme.Connection = conn;
+                removeSelectedProgramme.ExecuteNonQuery();
+                linkdb();
+            }
+            conn.Close();
         }
     }
 }

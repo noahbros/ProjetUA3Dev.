@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\
+C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\obj\Debug\net6.0-windows\
 ProjetFinal
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-\\Mac\Home\Documents\LaCite\Etape 3\IFM29987 - Dev. Appli. Bureau\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\App.xaml
+C:\Users\popta\OneDrive\Documents\GitHub\IFM29987_Projet_Final\ProjetFinal\ProjetFinal\App.xaml
 6-255489629
 
 101676869031
-194-1325968647
+202-426801018
 ConsulterPopUp.xaml;MainWindow.xaml;User Controls\TabAProposData.xaml;User Controls\TabConsulterData.xaml;User Controls\TabProgrammeData.xaml;User Controls\TabStagiaireData.xaml;
 
 False

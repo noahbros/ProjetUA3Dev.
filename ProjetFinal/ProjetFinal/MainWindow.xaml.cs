@@ -1,6 +1,9 @@
-﻿using ProjetFinal.User_Controls;
+﻿using MySql.Data.MySqlClient;
+using ProjetFinal.User_Controls;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +27,6 @@ namespace ProjetFinal
         public MainWindow()
         {
             InitializeComponent();
-            
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
 
