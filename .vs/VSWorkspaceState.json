@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\ProjetFinal",
+    "\\ProjetFinal\\ProjetFinal",
     "\\ProjetFinal\\ProjetFinal\\User Controls"
   ],
-  "SelectedNode": "\\ProjetFinal\\ProjetFinal.sln",
+  "SelectedNode": "\\ProjetFinal\\ProjetFinal\\User Controls\\TabProgrammeData.xaml.cs",
   "PreviewInSolutionExplorer": false
 }
