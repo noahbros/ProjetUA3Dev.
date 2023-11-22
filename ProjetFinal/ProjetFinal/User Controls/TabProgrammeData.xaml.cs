@@ -136,6 +136,7 @@ namespace ProjetFinal.User_Controls
             //If nothing is selected and we press the button.
             if(item == null)
             {
+                //Verifies with user if they want to proceed.
                 string message = "Voulez-vous effacer tout les éléments de la table programmes?";
                 MessageBoxResult result = MessageBox.Show(message, "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if(result == MessageBoxResult.Yes)
@@ -154,14 +155,24 @@ namespace ProjetFinal.User_Controls
             }
             else //If one element is selected and we press the button.
             {
-                string itemId = item.Row[0].ToString();
+                //Verifies with user if they want to proceed.
+                string message = "Voulez-vous effacer l'élément sélectionner de la table programmes?";
+                MessageBoxResult result = MessageBox.Show(message, "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    string itemId = item.Row[0].ToString();
 
-                MySqlCommand removeSelectedProgramme = new MySqlCommand();
-                removeSelectedProgramme.CommandText = "DELETE FROM programmes WHERE numeroProgramme = @numselect";
-                removeSelectedProgramme.Parameters.AddWithValue("@numselect", itemId);
-                removeSelectedProgramme.Connection = conn;
-                removeSelectedProgramme.ExecuteNonQuery();
-                linkdb();
+                    MySqlCommand removeSelectedProgramme = new MySqlCommand();
+                    removeSelectedProgramme.CommandText = "DELETE FROM programmes WHERE numeroProgramme = @numselect";
+                    removeSelectedProgramme.Parameters.AddWithValue("@numselect", itemId);
+                    removeSelectedProgramme.Connection = conn;
+                    removeSelectedProgramme.ExecuteNonQuery();
+                    linkdb();
+                }
+                else
+                {
+                    return;
+                }
             }
             conn.Close();
         }
