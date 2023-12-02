@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {}
+    "C:\\Users\\great\\OneDrive\\Desktop\\Git\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {
+    "C:\\Users\\great\\OneDrive\\Desktop\\Git\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+        "projectUniqueName": "C:\\Users\\great\\OneDrive\\Desktop\\Git\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
         "projectName": "ProjetFinal",
-        "projectPath": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
-        "packagesPath": "C:\\Users\\Amelie Racine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
+        "projectPath": "C:\\Users\\great\\OneDrive\\Desktop\\Git\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+        "packagesPath": "C:\\Users\\great\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\great\\OneDrive\\Desktop\\Git\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Amelie Racine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\great\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
