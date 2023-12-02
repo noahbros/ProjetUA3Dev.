@@ -85,16 +85,26 @@
 		<!--Apercu du nouveau stagiaire avant l'ajout -->
         <ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10" BorderThickness="1" BorderBrush="Black" Name="listeStagiaire" Width="680">
 			<ListView.View>
-				<GridView>
+                <GridView>
 					<GridViewColumn Header="# d'étudiant" Width="100" DisplayMemberBinding="{Binding NumeroEtudiant}"></GridViewColumn>
 					<GridViewColumn Header="Programme" Width="128" DisplayMemberBinding="{Binding NomDeProgramme}"></GridViewColumn>
 					<GridViewColumn Header="Pénom" Width="110" DisplayMemberBinding="{Binding Prenom}"></GridViewColumn>
 					<GridViewColumn Header="Nom" Width="128" DisplayMemberBinding="{Binding NomDeFamille}"></GridViewColumn>
-					<GridViewColumn Header="Date de naissance" Width="128" DisplayMemberBinding="{Binding DateDeNaissance}"></GridViewColumn>
+                    <GridViewColumn Header="Date de naissance" Width="128" DisplayMemberBinding="{Binding DateDeNaissance, StringFormat={}{0:yyyy/mm/dd}}"></GridViewColumn>
 					<GridViewColumn Header="Sexe" Width="75" DisplayMemberBinding="{Binding Sexe}"></GridViewColumn>
 				</GridView>
 			</ListView.View>
-		</ListView>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="White" />
+                    <Style.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="LightGray" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
 
 	</Grid>
 </UserControl>

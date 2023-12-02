@@ -46,19 +46,34 @@ namespace ProjetFinal.User_Controls
             {
                 try
                 {
-                    connection.Open();
                     MySqlCommand getAllStagiaires = new MySqlCommand("select * from stagiaires", connection);
+                    connection.Open();
                     DataTable tableData_Stagiaires = new DataTable();
                     tableData_Stagiaires.Load(getAllStagiaires.ExecuteReader());
-                    listeStagiaire.ItemsSource = tableData_Stagiaires.DefaultView;
+                    listesStagiaires.Clear();
+
+                    foreach (DataRow row in tableData_Stagiaires.Rows)
+                    {
+                        listesStagiaires.Add(new Stagiaire
+                        {
+                            NumeroEtudiant = Convert.ToInt32(row["numeroStagiaire"]),
+                            NomDeProgramme = row["programmeId"].ToString(),
+                            Prenom = row["prenom"].ToString(),
+                            NomDeFamille = row["nom"].ToString(),
+                            DateDeNaissance = Convert.ToDateTime(row["naissance"]).ToString("dd/MM/yyyy"),
+                            Sexe = row["sexe"].ToString()
+                        });
+                    }
+                    listeStagiaire.ItemsSource = listesStagiaires;
+                    connection.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show($"Erreur lors de la connection à la base de donnée : {ex.Message}");
                 }
-                                
-            } 
-            
+
+            }
+
         }
 
         public TabStagiaireData()
@@ -68,6 +83,7 @@ namespace ProjetFinal.User_Controls
             listeDeProgramme = TabProgrammeData.listesProgrammes;
             programmeEtudiant.ItemsSource = listeDeProgramme;
             liaisonBaseDonnee();
+            listeStagiaire.AlternationCount = 2;
         }
 
         private void NumeroEtudiant_GotFocus(object sender, RoutedEventArgs e) //Lorsque l'utilisateur clique sur le textBox NumeroEtudiant le default texte "0" va disparaitre
@@ -98,7 +114,7 @@ namespace ProjetFinal.User_Controls
                 {
                     numeroEtudiant++;
                     NumeroEtudiant.Text = numeroEtudiant.ToString();
-                }  
+                }
             }
             catch (FormatException)
             {
@@ -124,42 +140,42 @@ namespace ProjetFinal.User_Controls
                 }
                 else
                 {
-                    MessageBox.Show("Le numéro étudiant doit être un nombre entier de 7 chiffres.");                    
+                    MessageBox.Show("Le numéro étudiant doit être un nombre entier de 7 chiffres.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Une erreur c'est produite : "+ex.Message);
+                MessageBox.Show("Une erreur c'est produite : " + ex.Message);
             }
         }
         private void Btn_Ajouter_Click(object sender, RoutedEventArgs e)
         {
-            int champsNonRemplis =0;
+            int champsNonRemplis = 0;
 
             string prenomAjouter;
             string nomDeFamilleAjouter;
-            string dateDeNaissanceAjouter;                                                               
-            string nomProgrammeAjouter;         
+            string dateDeNaissanceAjouter;
+            string nomProgrammeAjouter;
             string sexeAjouter;
 
             //Verification de la date de naissance
-            DateTime? dateNaissance = dateNaissanceEtudiant.SelectedDate; 
+            DateTime? dateNaissance = dateNaissanceEtudiant.SelectedDate;
             if (dateNaissance != null)
-            {                
+            {
                 DateTime dateNaissanceValue = dateNaissance.Value;
                 DateTime dateAujourdhui = DateTime.Today;
 
-                if(dateNaissanceValue > dateAujourdhui)
+                if (dateNaissanceValue > dateAujourdhui)
                 {
                     MessageBox.Show("La date de naissance ne peut pas être dans le future.");
                     return;
-                } 
+                }
             }
             else
             {
                 champsNonRemplis++;
                 MessageBox.Show("Veuillez saisir une date de naissance.");
-                    return;
+                return;
             }
 
 
@@ -187,12 +203,12 @@ namespace ProjetFinal.User_Controls
                 !string.IsNullOrWhiteSpace(prenomEtudiant.Text) &&
                 !string.IsNullOrWhiteSpace(nomEtudiant.Text) &&
                 !string.IsNullOrWhiteSpace(programmeEtudiant.Text) &&
-                dateNaissanceEtudiant.SelectedDate != null) 
+                dateNaissanceEtudiant.SelectedDate != null)
             {
                 //Verification du format du NumeroEtudiant
                 if (NumeroEtudiant.Text.Length != 7 || !int.TryParse(NumeroEtudiant.Text, out int numeroEtudiant))
                 {
-                    MessageBox.Show("Le numéro d'étudiant doit être un nombre entier de 7 chiffres.");  
+                    MessageBox.Show("Le numéro d'étudiant doit être un nombre entier de 7 chiffres.");
                     return;
                 }
                 else
@@ -263,13 +279,13 @@ namespace ProjetFinal.User_Controls
         {
             try
             {
-                using(MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;"))
+                using (MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;"))
                 {
                     connection.Open();
                     MySqlCommand requeteNomProgramme = new MySqlCommand("SELECT Nom FROM programmes", connection);
                     List<string> programmeNoms = new List<string>();
 
-                    using(var reader = requeteNomProgramme.ExecuteReader())
+                    using (var reader = requeteNomProgramme.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -279,7 +295,7 @@ namespace ProjetFinal.User_Controls
                     programmeEtudiant.ItemsSource = programmeNoms;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Erreur lors de la recherche des noms des programmes : {ex.Message}");
             }
@@ -296,45 +312,67 @@ namespace ProjetFinal.User_Controls
         //Efface les donnees dans les champs
         private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
         {
+            MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;PASSWORD=");
+            connection.Open();
+
 
             if (listeStagiaire.SelectedItem != null) // Efface un seule stagiaire saisi dans la listView
             {
-                //on obtient la stagiaire à effacer
-                Stagiaire stagiaireAEffacer = (Stagiaire)listeStagiaire.SelectedItem;
 
-                String message = "Voulez-vous effacer «" + stagiaireAEffacer.Prenom + " " + stagiaireAEffacer.NomDeFamille + "» de la liste des stagiaires";
-
-                MessageBoxResult result = MessageBox.Show(message, "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
+                if (listeStagiaire.SelectedItem is Stagiaire stagiaireAEffacer)
                 {
-                    listesStagiaires.Remove(stagiaireAEffacer);
-                }
-            }
-            else         //Efface tous les stagiaires dans la listView si aucun stagiaire n'a ete saisi
-            {
-                //On confirme que l'utilisateur veut bel et bien effacer la liste
-                MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste des stagiaires existants?", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    String message = "Voulez-vous effacer «" + stagiaireAEffacer.Prenom + " " + stagiaireAEffacer.NomDeFamille + "» de la liste des stagiaires et de la base de donnée ? ";
 
-                if (result == MessageBoxResult.Yes)
+                    MessageBoxResult result = MessageBox.Show(message, "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+
+                        MySqlCommand effacerStagiaireChoisi = new MySqlCommand();
+                        effacerStagiaireChoisi.CommandText = "DELETE FROM stagiaires WHERE numeroStagiaire = @numeroStagiaire";
+                        effacerStagiaireChoisi.Parameters.AddWithValue("@numeroStagiaire", stagiaireAEffacer.NumeroEtudiant);
+                        effacerStagiaireChoisi.Connection = connection;
+                        effacerStagiaireChoisi.ExecuteNonQuery();
+                        liaisonBaseDonnee();
+
+                        listesStagiaires.Remove(stagiaireAEffacer);
+                    }
+
+
+                }
+                else         //Efface tous les stagiaires dans la listView si aucun stagiaire n'a ete saisi
                 {
-                    NumeroEtudiant.Text = "0";
-                    prenomEtudiant.Text = "";
-                    nomEtudiant.Text = "";
-                    dateNaissanceEtudiant.SelectedDate = null;
-                    programmeEtudiant.SelectedItem = null;
-                    sexeHomme.IsChecked = false;
-                    sexeFemme.IsChecked = false;
-                    sexeAutre.IsChecked = false;
-                    listesStagiaires.Clear();
-                    listeStagiaire.ItemsSource = listesStagiaires;
-                }
-                
-            }
-            
+                    //On confirme que l'utilisateur veut bel et bien effacer la liste
+                    MessageBoxResult result = MessageBox.Show("Voulez-vous effacer la liste des stagiaires existants ? Vous effacerez tout les stagiaires dans la base de donnée aussi.", "Message de confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        NumeroEtudiant.Text = "0";
+                        prenomEtudiant.Text = "";
+                        nomEtudiant.Text = "";
+                        dateNaissanceEtudiant.SelectedDate = null;
+                        programmeEtudiant.SelectedItem = null;
+                        sexeHomme.IsChecked = false;
+                        sexeFemme.IsChecked = false;
+                        sexeAutre.IsChecked = false;
+                        listesStagiaires.Clear();
+                        listeStagiaire.ItemsSource = listesStagiaires;
+
+                        MySqlCommand effacerToutLesStagiaires = new MySqlCommand();
+                        effacerToutLesStagiaires.CommandText = "DELETE FROM stagiaires";
+                        effacerToutLesStagiaires.Connection = connection;
+                        effacerToutLesStagiaires.ExecuteNonQuery();
+                        liaisonBaseDonnee();
+                    }
+
+                }
+
+
+            }
         }
     }
 }
+
+
 
 
