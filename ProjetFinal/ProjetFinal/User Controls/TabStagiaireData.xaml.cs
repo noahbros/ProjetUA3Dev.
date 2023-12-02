@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +37,29 @@ namespace ProjetFinal.User_Controls
     {
         public static ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>();
         public ObservableCollection<Programme> listeDeProgramme = new ObservableCollection<Programme>();
+        public static DataTable tableData_Stagiaires = new DataTable();
+
+        //Liaison de la base de données
+        private void liaisonBaseDonnee()
+        {
+            using (MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;convert zero datetime=True"))
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand getAllStagiaires = new MySqlCommand("select * from stagiaires", connection);
+                    DataTable tableData_Stagiaires = new DataTable();
+                    tableData_Stagiaires.Load(getAllStagiaires.ExecuteReader());
+                    listeStagiaire.ItemsSource = tableData_Stagiaires.DefaultView;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"Erreur lors de la connection à la base de donnée : {ex.Message}");
+                }
+                                
+            } 
+            
+        }
 
         public TabStagiaireData()
         {
@@ -42,7 +67,9 @@ namespace ProjetFinal.User_Controls
             listeStagiaire.ItemsSource = listesStagiaires;
             listeDeProgramme = TabProgrammeData.listesProgrammes;
             programmeEtudiant.ItemsSource = listeDeProgramme;
+            liaisonBaseDonnee();
         }
+
         private void NumeroEtudiant_GotFocus(object sender, RoutedEventArgs e) //Lorsque l'utilisateur clique sur le textBox NumeroEtudiant le default texte "0" va disparaitre
         {
             if (NumeroEtudiant.Text == "0")
@@ -174,6 +201,47 @@ namespace ProjetFinal.User_Controls
                     listesStagiaires.Add(new Stagiaire { Prenom = prenomAjouter, NomDeFamille = nomDeFamilleAjouter, NumeroEtudiant = numeroEtudiant, DateDeNaissance = dateDeNaissanceAjouter, Sexe = sexeAjouter, NomDeProgramme = nomProgrammeAjouter });
                     listeStagiaire.ItemsSource = listesStagiaires;
 
+                    //Vérifie si le numéro de stagiaire est déjà dans la BDD.
+                    MySqlConnection connecter = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;convert zero datetime=True");
+                    connecter.Open();
+                    MySqlCommand verificationUnique = new MySqlCommand();
+
+                    verificationUnique.CommandText = "SELECT * FROM stagiaires WHERE numeroStagiaire = @numero";
+                    verificationUnique.Parameters.AddWithValue("@numero", numeroEtudiant);
+                    verificationUnique.Connection = connecter;
+                    var verifier = verificationUnique.ExecuteScalar();
+                    if (verifier != null)
+                    {
+                        MessageBox.Show("Une des valeurs dans les champs contient une valeur déjà existante dans la BDD, veuillez réessayer.", "Error 200 : Duplicate variables", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    MySqlCommand chercherNumeroProgramme = new MySqlCommand("SELECT numeroProgramme FROM programmes WHERE nom = @nomProgramme", connecter);
+                    chercherNumeroProgramme.Parameters.AddWithValue("@nomProgramme", nomProgrammeAjouter);
+
+                    int programmeId = Convert.ToInt32(chercherNumeroProgramme.ExecuteScalar());
+
+                    //Rajoute les données dans la BDD
+                    MySqlCommand addStagiaire = new MySqlCommand();
+                    addStagiaire.CommandText = "INSERT INTO stagiaires(numeroStagiaire, prenom, nom, naissance, sexe, programmeId ) VALUES (@numeroStagiaire, @prenom, @nom, @naissance, @sexe, @programmeId)";
+                    addStagiaire.Parameters.AddWithValue("@numeroStagiaire", numeroEtudiant);
+                    addStagiaire.Parameters.AddWithValue("@prenom", prenomAjouter);
+                    addStagiaire.Parameters.AddWithValue("@nom", nomDeFamilleAjouter);
+                    addStagiaire.Parameters.AddWithValue("@naissance", dateNaissanceEtudiant.SelectedDate?.ToString("yyyy-MM-dd"));
+                    addStagiaire.Parameters.AddWithValue("@sexe", sexeAjouter);
+                    addStagiaire.Parameters.AddWithValue("@programmeId", programmeId);
+                    addStagiaire.Connection = connecter;
+                    int success = addStagiaire.ExecuteNonQuery();
+                    if (success == 1)
+                    {
+                        MessageBox.Show("Les données ont été ajoutées avec succès.", "Succès");
+                        liaisonBaseDonnee();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de l'ajout à la base de données.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                     //Resets data.
                     NumeroEtudiant.Text = "0";
                     prenomEtudiant.Text = "";
@@ -193,7 +261,30 @@ namespace ProjetFinal.User_Controls
         //Afficher tout les programmes ajouter dans l'onglet Programme a la ComboBox du choix de programme
         private void programmeEtudiant_DropDownOpened(object sender, EventArgs e)
         {
-            programmeEtudiant.ItemsSource = TabProgrammeData.listesProgrammes.Select(p => p.Nom);
+            try
+            {
+                using(MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;"))
+                {
+                    connection.Open();
+                    MySqlCommand requeteNomProgramme = new MySqlCommand("SELECT Nom FROM programmes", connection);
+                    List<string> programmeNoms = new List<string>();
+
+                    using(var reader = requeteNomProgramme.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            programmeNoms.Add(reader.GetString(0));
+                        }
+                    }
+                    programmeEtudiant.ItemsSource = programmeNoms;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la recherche des noms des programmes : {ex.Message}");
+            }
+
+            //programmeEtudiant.ItemsSource = TabProgrammeData.listesProgrammes.Select(p => p.Nom);
 
             if (programmeEtudiant.HasItems == false)
             {

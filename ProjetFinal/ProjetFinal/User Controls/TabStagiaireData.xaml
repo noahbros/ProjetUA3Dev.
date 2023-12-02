@@ -64,7 +64,7 @@
 		<!--Selection de la date de naissance -->
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,25,0" VerticalAlignment="Center">
 			<Label Content="Date de naissance : " FontWeight="Bold" FontSize="16" />
-			<DatePicker Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" Name="dateNaissanceEtudiant"/>
+			<DatePicker Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" Name="dateNaissanceEtudiant" SelectedDateFormat="Short"/>
 		</StackPanel>
 
 

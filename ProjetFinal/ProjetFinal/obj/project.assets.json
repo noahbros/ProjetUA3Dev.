@@ -1792,19 +1792,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\popta\\.nuget\\packages\\": {}
+    "C:\\Users\\Amelie Racine\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+      "projectUniqueName": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
       "projectName": "ProjetFinal",
-      "projectPath": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
-      "packagesPath": "C:\\Users\\popta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
+      "projectPath": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+      "packagesPath": "C:\\Users\\Amelie Racine\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Amelie Racine\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\popta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Amelie Racine\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1854,7 +1854,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
