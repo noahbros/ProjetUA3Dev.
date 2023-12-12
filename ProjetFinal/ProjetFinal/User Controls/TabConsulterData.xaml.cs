@@ -28,7 +28,7 @@ namespace ProjetFinal.User_Controls
         public static ObservableCollection<Stagiaire> searchCollection = new ObservableCollection<Stagiaire>(); //Collection utilisé pour filtrer les items dans la collection stagiaires de stagiaires.cs pour l'afficher dans le listView de la tab Consulter.
         public static int lvConsulterIndex; //Variable utilisé pour que le pop-up identifie le stagiaire et ses données.
         public static DataTable tableData_Stagiaires = new DataTable();
-        public static String ServerHostname = "192.168.2.19"; //addresse IP de la base de donnée
+        public static String ServerHostname = "127.0.0.1"; //addresse IP de la base de donnée
 
         //on déclare nos liste d'objets
         public static List<Stagiaire> listeStagiaires = new List<Stagiaire>();
