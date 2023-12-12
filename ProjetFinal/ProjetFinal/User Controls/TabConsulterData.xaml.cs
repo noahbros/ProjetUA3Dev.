@@ -1,6 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +27,92 @@ namespace ProjetFinal.User_Controls
     {
         public static ObservableCollection<Stagiaire> searchCollection = new ObservableCollection<Stagiaire>(); //Collection utilisé pour filtrer les items dans la collection stagiaires de stagiaires.cs pour l'afficher dans le listView de la tab Consulter.
         public static int lvConsulterIndex; //Variable utilisé pour que le pop-up identifie le stagiaire et ses données.
+        public static DataTable tableData_Stagiaires = new DataTable();
+        public static String ServerHostname = "192.168.2.19"; //addresse IP de la base de donnée
+
+        //on déclare nos liste d'objets
+        public static List<Stagiaire> listeStagiaires = new List<Stagiaire>();
+        public List<Programme> listeProgrammes = new List<Programme>();
+
+
+
+        //On obtient les donnes de la base de donnée
+        private void liaisonBaseDonnee()
+        {
+            using (MySqlConnection connection = new MySqlConnection("SERVER=" + ServerHostname + ";DATABASE=projetfinaldev;UID=root;convert zero datetime=True"))
+            {
+                try
+                {
+                    MySqlCommand getAllProgrammes = new MySqlCommand("select * from programmes", connection);
+                    MySqlCommand getAllStagiaires = new MySqlCommand("select * from stagiaires", connection);
+                    connection.Open();
+
+
+
+                    DataTable tableData_Stagiaires = new DataTable();
+                    DataTable tableData_Programmes = new DataTable();
+
+                    //on remplis les tableData avec les données obtenues lors de la query
+                    tableData_Stagiaires.Load(getAllStagiaires.ExecuteReader());
+                    tableData_Programmes.Load(getAllProgrammes.ExecuteReader());
+
+                    //on vide les listes
+                    listeStagiaires.Clear();
+                    listeProgrammes.Clear();
+
+                    //on passe à travers notre DataRow, on crée un objet de type stagiaire et on l'ajoute à listeStagiaires
+                    foreach (DataRow row in tableData_Stagiaires.Rows)
+                    {
+                        listeStagiaires.Add(new Stagiaire
+                        {
+                            NumeroEtudiant = Convert.ToInt32(row["numeroStagiaire"]),
+                            NomDeProgramme = row["programmeId"].ToString(),
+                            Prenom = row["prenom"].ToString(),
+                            NomDeFamille = row["nom"].ToString(),
+                            DateDeNaissance = Convert.ToDateTime(row["naissance"]).ToString("dd/MM/yyyy"),
+                            Sexe = row["sexe"].ToString()
+                        });
+                    }
+
+                    //on passe à travers notre DataRow, on crée un objet de type programme et on l'ajoute à listeProgrammes
+                    foreach (DataRow row in tableData_Programmes.Rows)
+                    {
+                        listeProgrammes.Add(new Programme
+                        {
+                            Numero = Convert.ToInt32(row["numeroProgramme"]),
+                            Nom = row["nom"].ToString(),
+                            Duree = Convert.ToInt32(row["duree"])
+                        });
+                    }
+
+
+
+                    //on donne notre liste de stagières comme itemSource pour notre listView
+
+                    lvConsulter.ItemsSource = listeStagiaires;
+
+                    //on ferme la connection
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erreur lors de la connection à la base de donnée : {ex.Message}");
+                }
+
+            }
+
+        }
+
+
+
         public TabConsulterData()
         {
             InitializeComponent();
-            lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
+
+            //on fait un appel à la base de donnée et on popule le listView
+            liaisonBaseDonnee();
+            //lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
+
         }
 
         ///Fonctionalités pour le boutton "Rechercher" dans la tab Consulter.
@@ -200,8 +285,7 @@ namespace ProjetFinal.User_Controls
         //Active lorsque quelqu'un ouvre le ComboBox
         private void cmbProgrammes_DropDownOpened(object sender, EventArgs e)
         {
-           
-            foreach(Programme p in TabProgrammeData.listesProgrammes) //itère au travers des éléments dans la collection statique de programme dans programme.cs
+            foreach (Programme p in listeProgrammes) //itère au travers des éléments dans la collection statique de programme dans programme.cs
             {
                 if (cmbProgrammes.Items.Contains(p.Nom)) //Vérifie si le combobox contient déjà la valeur.
                 {

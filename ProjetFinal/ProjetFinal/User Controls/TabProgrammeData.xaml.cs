@@ -34,11 +34,12 @@ namespace ProjetFinal.User_Controls
     {
         public static ObservableCollection<Programme> listesProgrammes = new ObservableCollection<Programme>(); //Collection statique qui stocke tout les entrées (objet Programme) de programmes.
         public static DataTable dt_programme = new DataTable();
+        public static String ServerHostname = "192.168.2.19";
 
         //Liaison de la base de données
         private void linkdb()
         {
-            MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;PASSWORD=");
+            MySqlConnection connection = new MySqlConnection("SERVER="+ServerHostname + ";DATABASE=projetfinaldev;UID=root;PASSWORD=");
             MySqlCommand getAll = new MySqlCommand("select * from programmes", connection);
             connection.Open();
             DataTable dt_programme = new DataTable();
@@ -82,7 +83,7 @@ namespace ProjetFinal.User_Controls
                 }
                 
                 //Vérifie si le numéro de programme est déjà dans la BDD.
-                MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;PASSWORD=");
+                MySqlConnection conn = new MySqlConnection("SERVER="+ServerHostname+";DATABASE=projetfinaldev;UID=root;PASSWORD=");
                 conn.Open();
                 MySqlCommand uniqueChecker = new MySqlCommand();
 
@@ -129,7 +130,7 @@ namespace ProjetFinal.User_Controls
         ///Fonctionalité pour le boutton "Supprimer" dans la tab "programmes".
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;PASSWORD=");
+            MySqlConnection conn = new MySqlConnection("SERVER="+ServerHostname+";DATABASE=projetfinaldev;UID=root;PASSWORD=");
             conn.Open();
             DataRowView item = (DataRowView)dataGrid_programmes.SelectedItem;
             

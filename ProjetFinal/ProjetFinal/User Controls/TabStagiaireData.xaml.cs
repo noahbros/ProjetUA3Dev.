@@ -38,11 +38,12 @@ namespace ProjetFinal.User_Controls
         public static ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>();
         public ObservableCollection<Programme> listeDeProgramme = new ObservableCollection<Programme>();
         public static DataTable tableData_Stagiaires = new DataTable();
+        public static String ServerHostname = "192.168.2.19";
 
         //Liaison de la base de données
         private void liaisonBaseDonnee()
         {
-            using (MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;convert zero datetime=True"))
+            using (MySqlConnection connection = new MySqlConnection("SERVER="+ServerHostname +";DATABASE=projetfinaldev;UID=root;convert zero datetime=True"))
             {
                 try
                 {
@@ -218,7 +219,7 @@ namespace ProjetFinal.User_Controls
                     listeStagiaire.ItemsSource = listesStagiaires;
 
                     //Vérifie si le numéro de stagiaire est déjà dans la BDD.
-                    MySqlConnection connecter = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;convert zero datetime=True");
+                    MySqlConnection connecter = new MySqlConnection("SERVER="+ ServerHostname + ";DATABASE=projetfinaldev;UID=root;convert zero datetime=True");
                     connecter.Open();
                     MySqlCommand verificationUnique = new MySqlCommand();
 
@@ -279,7 +280,7 @@ namespace ProjetFinal.User_Controls
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;"))
+                using (MySqlConnection connection = new MySqlConnection("SERVER=" + ServerHostname + ";DATABASE=projetfinaldev;UID=root;"))
                 {
                     connection.Open();
                     MySqlCommand requeteNomProgramme = new MySqlCommand("SELECT Nom FROM programmes", connection);
@@ -312,7 +313,7 @@ namespace ProjetFinal.User_Controls
         //Efface les donnees dans les champs
         private void Btn_Effacer_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection("SERVER=localhost;DATABASE=projetfinaldev;UID=root;PASSWORD=");
+            MySqlConnection connection = new MySqlConnection("SERVER=" + ServerHostname + ";DATABASE=projetfinaldev;UID=root;PASSWORD=");
             connection.Open();
 
 
