@@ -120,9 +120,10 @@ namespace ProjetFinal.User_Controls
         {
             lvConsulter.ItemsSource = null;
             searchCollection.Clear();
-            string nomSearch = searchNom.Text.ToLower();
-            string prenomSearch = searchPrenom.Text.ToLower();
+            string nomSearch = searchNom.Text.ToLower().Trim();
+            string prenomSearch = searchPrenom.Text.ToLower().Trim();
             string programmeSearch = cmbProgrammes.Text;
+            
 
             //Affiche tout les données si les champs sont vide. (default view)
             if(nomSearch == "" && prenomSearch == "" && programmeSearch == "Aucun")
@@ -131,8 +132,10 @@ namespace ProjetFinal.User_Controls
                 return;
             }
 
+
             //Filtre la collection de stagiaires dans stagiaires et l'associe à la collection filtrer.
-            foreach (Stagiaire s in TabStagiaireData.listesStagiaires)
+            //foreach (Stagiaire s in TabStagiaireData.listesStagiaires)
+            foreach (Stagiaire s in listeStagiaires)
             {
                 //confirmateur pour savoir si nous avons effectivements un "match" dans la collection de stagiaires dans stagiaires.cs.
                 int confirmerNom = 0;
@@ -145,14 +148,17 @@ namespace ProjetFinal.User_Controls
                 bool programmeSearched = false;
 
 
-                char[] valueNom = s.NomDeFamille.ToLower().ToCharArray();
+                char[] valueNom = s.NomDeFamille.ToLower().Trim().ToCharArray();
                 char[] searchedNom = nomSearch.ToCharArray();
 
-                char[] valuePrenom = s.Prenom.ToLower().ToCharArray();
+                char[] valuePrenom = s.Prenom.ToLower().Trim().ToCharArray();
                 char[] searchedPrenom = prenomSearch.ToCharArray();
 
                 char[] valueProgramme = s.NomDeProgramme.ToCharArray();
                 char[] searchedProgramme = programmeSearch.ToCharArray();
+
+
+                //char[] searchedProgramme;
 
                 //Checks if field "nom" has a value.
                 if (nomSearch != "")
@@ -171,7 +177,7 @@ namespace ProjetFinal.User_Controls
                         }
                     }
                 }
-
+                
                 //Checks if the field "prenom" has a value.
                 if (prenomSearch != "")
                 {
@@ -193,6 +199,19 @@ namespace ProjetFinal.User_Controls
                 if (programmeSearch != "Aucun")
                 {
                     programmeSearched = true;
+
+                    //on obtient le numéro de programme qui correspond à celui qui as été demandé.
+                    foreach (Programme p in listeProgrammes)
+                    {
+                        if (p.Nom == programmeSearch)
+                        {
+                            searchedProgramme = p.Numero.ToString().ToCharArray();
+                            break;
+                        }
+                    }
+
+                    Trace.WriteLine("searched: " + searchedProgramme.ToString());
+                    Trace.WriteLine("value: " + valueProgramme.ToString());
 
                     if (valueProgramme.Length >= searchedProgramme.Length)
                     {
@@ -276,6 +295,7 @@ namespace ProjetFinal.User_Controls
 
         private void lvConsulter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            //Stagiaire S = lvConsulter.SelectedItem as Stagiaire;
             lvConsulterIndex = lvConsulter.SelectedIndex;  
             var formPopup = new ConsulterPopUp();
             formPopup.Show(); // if you need non-modal window
