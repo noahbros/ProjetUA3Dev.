@@ -38,7 +38,7 @@ namespace ProjetFinal.User_Controls
         public static ObservableCollection<Stagiaire> listesStagiaires = new ObservableCollection<Stagiaire>();
         public ObservableCollection<Programme> listeDeProgramme = new ObservableCollection<Programme>();
         public static DataTable tableData_Stagiaires = new DataTable();
-        public static String ServerHostname = "192.168.2.19";
+        public static String ServerHostname = "127.0.0.1";
 
         //Liaison de la base de données
         private void liaisonBaseDonnee()

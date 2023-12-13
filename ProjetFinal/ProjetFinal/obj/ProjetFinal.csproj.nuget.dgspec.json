@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {}
+    "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {}
   },
   "projects": {
-    "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {
+    "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+        "projectUniqueName": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
         "projectName": "ProjetFinal",
-        "projectPath": "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
-        "packagesPath": "C:\\Users\\Olivier\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Documents\\LaCite\\Etape 3\\IFM29987 - Dev. Appli. Bureau\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
+        "projectPath": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\ProjetFinal.csproj",
+        "packagesPath": "C:\\Users\\popta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\popta\\OneDrive\\Documents\\GitHub\\IFM29987_Projet_Final\\ProjetFinal\\ProjetFinal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Olivier\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\popta\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
