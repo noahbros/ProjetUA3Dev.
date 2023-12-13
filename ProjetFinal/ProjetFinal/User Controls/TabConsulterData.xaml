@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjetFinal.User_Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
 
     <DockPanel Background="Gainsboro">
         <Grid DockPanel.Dock="Top" Margin="10 0 10 0">
@@ -21,9 +22,10 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Row="0" Grid.ColumnSpan="4">
+
                 <Label Grid.Row="0" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="24"  FontFamily="Bahnschrift SemiBold SemiCondensed"/>
                 <Border Margin="4" Background="BlanchedAlmond" BorderBrush="DarkGray" BorderThickness="1" >
-                    <TextBlock Grid.Row="1" Text="Ici vous pouvez consulter la liste des stagiaires dans le système. De plus, on peut obtenir plus de précision par le biais d'une recherche avec le prénom, nom ou programme de l'étudiant. Finalement, on peut double-cliquez sur un étudiant, pour voir son profil et son information." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="Ici vous pouvez consulter la liste des stagiaires dans le système. De plus, on peut obtenir plus de précision par le biais d'une recherche avec le prénom, nom ou programme de l'étudiant. Finalement, on peut double-cliquez sur un étudiant, pour voir son profil et son information. Afin de rafraichir les données, SVP cliquez sur Rechercher avec les filtres par défaut (rien)." TextWrapping="Wrap" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Perpetua" FontSize="14"></TextBlock>
                 </Border>
 
             </StackPanel>

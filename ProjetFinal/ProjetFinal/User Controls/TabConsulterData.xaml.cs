@@ -23,12 +23,16 @@ namespace ProjetFinal.User_Controls
     /// Interaction logic for TabConsulterData.xaml
     /// </summary>
     /// 
-    public partial class TabConsulterData : UserControl
+    public partial class TabConsulterData : UserControl 
     {
         public static ObservableCollection<Stagiaire> searchCollection = new ObservableCollection<Stagiaire>(); //Collection utilisé pour filtrer les items dans la collection stagiaires de stagiaires.cs pour l'afficher dans le listView de la tab Consulter.
         public static int lvConsulterIndex; //Variable utilisé pour que le pop-up identifie le stagiaire et ses données.
+        public static Stagiaire stagiaireSelectioner;
+        public static Programme programmeSelectionner;
         public static DataTable tableData_Stagiaires = new DataTable();
-        public static String ServerHostname = "127.0.0.1"; //addresse IP de la base de donnée
+        public static String ServerHostname = "localhost"; //hostname de la base de donnéem "localhost" dans la majorité des cas
+        
+        
 
         //on déclare nos liste d'objets
         public static List<Stagiaire> listeStagiaires = new List<Stagiaire>();
@@ -111,13 +115,23 @@ namespace ProjetFinal.User_Controls
 
             //on fait un appel à la base de donnée et on popule le listView
             liaisonBaseDonnee();
+            Trace.WriteLine("TabConsulter constructeur");
             //lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
 
+            this.DataContext = this;
         }
+
+        
+
+       
+
 
         ///Fonctionalités pour le boutton "Rechercher" dans la tab Consulter.
         private void Boutton_Rechercher_Click(object sender, RoutedEventArgs e)
         {
+            //On rafraichis les données
+            liaisonBaseDonnee();
+
             lvConsulter.ItemsSource = null;
             searchCollection.Clear();
             string nomSearch = searchNom.Text.ToLower().Trim();
@@ -128,7 +142,7 @@ namespace ProjetFinal.User_Controls
             //Affiche tout les données si les champs sont vide. (default view)
             if(nomSearch == "" && prenomSearch == "" && programmeSearch == "Aucun")
             {
-                lvConsulter.ItemsSource = TabStagiaireData.listesStagiaires;
+                lvConsulter.ItemsSource = listeStagiaires;
                 return;
             }
 
@@ -209,9 +223,6 @@ namespace ProjetFinal.User_Controls
                             break;
                         }
                     }
-
-                    Trace.WriteLine("searched: " + searchedProgramme.ToString());
-                    Trace.WriteLine("value: " + valueProgramme.ToString());
 
                     if (valueProgramme.Length >= searchedProgramme.Length)
                     {
@@ -296,7 +307,20 @@ namespace ProjetFinal.User_Controls
         private void lvConsulter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //Stagiaire S = lvConsulter.SelectedItem as Stagiaire;
-            lvConsulterIndex = lvConsulter.SelectedIndex;  
+            lvConsulterIndex = lvConsulter.SelectedIndex;
+            //Programme pgmStagiaire
+            stagiaireSelectioner = listeStagiaires.ElementAt(lvConsulterIndex);
+
+            //on obtient le programme
+            foreach (Programme p in listeProgrammes) //itère au travers des éléments dans la collection statique de programme dans programme.cs
+            {
+                if (p.Numero.ToString() == stagiaireSelectioner.NomDeProgramme) //Vérifie si le combobox contient déjà la valeur.
+                {
+                    programmeSelectionner = p;
+                }
+            }
+
+
             var formPopup = new ConsulterPopUp();
             formPopup.Show(); // if you need non-modal window
 

@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\popta\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\popta\\.nuget\\packages"
+      "C:\\Users\\Olivier\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Olivier\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

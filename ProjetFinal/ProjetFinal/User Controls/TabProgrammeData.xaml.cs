@@ -34,7 +34,7 @@ namespace ProjetFinal.User_Controls
     {
         public static ObservableCollection<Programme> listesProgrammes = new ObservableCollection<Programme>(); //Collection statique qui stocke tout les entrées (objet Programme) de programmes.
         public static DataTable dt_programme = new DataTable();
-        public static String ServerHostname = "127.0.0.1";
+        public static String ServerHostname = "localhost"; //hostname de la base de donnéem "localhost" dans la majorité des cas
 
         //Liaison de la base de données
         private void linkdb()

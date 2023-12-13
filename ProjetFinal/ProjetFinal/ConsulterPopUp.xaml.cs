@@ -21,10 +21,11 @@ namespace ProjetFinal
     /// </summary>
     public partial class ConsulterPopUp : Window
     {
-        List<Programme> infoProgramme = new ObservableCollection<Programme>(TabProgrammeData.listesProgrammes).ToList(); //Liste de référence pour la collection statique de programme dans programme.cs
-        List<Stagiaire> infoStagiaire = new ObservableCollection<Stagiaire>(TabStagiaireData.listesStagiaires).ToList(); //Liste de référence pour la collection statique de stagiaires dans stagiaires.cs
         ObservableCollection<Stagiaire> searchCollectionComparer = new ObservableCollection<Stagiaire>(TabConsulterData.searchCollection); //Collection de référence pour la collection de filtrage dans consulter.cs
-        int index = TabConsulterData.lvConsulterIndex; //Integer de référence de la variable integer statique dans consulter.cs (elle est utilisé pour trouver l'index où l'utilisateur à pesé sur la listView pour avoir plus d'information)
+        Stagiaire stagiaire = TabConsulterData.stagiaireSelectioner;
+        Programme programme = TabConsulterData.programmeSelectionner;
+
+
         public ConsulterPopUp()
         {
             InitializeComponent();
@@ -33,35 +34,23 @@ namespace ProjetFinal
             string prenom;
             string nomDeProgramme;
 
-            if(searchCollectionComparer.Count > 0) //Vérifie que la collection de filtrage n'est pas vide. Si oui elle prend la liste de filtrage comme référence
-            {
-                nom = searchCollectionComparer[index].NomDeFamille;
-                prenom = searchCollectionComparer[index].Prenom;
-                nomDeProgramme = searchCollectionComparer[index].NomDeProgramme;
-            }
-            else //Sinon elle prend la liste de Stagiaires comme référence.
-            {
-                nom = TabStagiaireData.listesStagiaires[index].NomDeFamille;
-                prenom = TabStagiaireData.listesStagiaires[index].Prenom;
-                nomDeProgramme = TabStagiaireData.listesStagiaires[index].NomDeProgramme;
-            }
 
-            //Predicat créer pour plus tard trouver l'informations associés à l'index pesé.
-            Predicate<Programme> validProgramme = x => x.Nom == nomDeProgramme; 
-            Predicate<Stagiaire> validStagiaire = x => x.NomDeFamille == nom && x.Prenom == prenom;
+            nom = stagiaire.NomDeFamille;
+            prenom = stagiaire.Prenom;
+            nomDeProgramme = programme.Nom;
 
             //on met à jour le nom de la fenêtre
             this.Title = "Consulter: " + prenom + " " + nom;
 
             //Cherche le programme et l'affiche.
-            Programme p = infoProgramme.Find(validProgramme); 
+            Programme p = programme;
 
             NomProgrammeLabel.Content = p.Nom;
             NumeroProgrammeLabel.Content = p.Numero;
             DureeProgrammeLabel.Content = p.Duree + " moi(s)";
 
             //Cherche le stagiaire et l'affiche.
-            Stagiaire s = infoStagiaire.Find(validStagiaire);
+            Stagiaire s = stagiaire;
 
             PrenomLabel.Content = s.Prenom;
             NomLabel.Content = s.NomDeFamille;
